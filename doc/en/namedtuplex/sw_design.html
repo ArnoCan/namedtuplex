@@ -1,0 +1,532 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.4. The SW-Design of namedtuplex &mdash; namedtuplex  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Modules" href="index_modules.html" />
+    <link rel="prev" title="5.3. The Supported Class Features" href="class_features.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Shortcuts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">NamedtupleX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_cockpit.html">apidoc</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index_part_abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_platform_support.html">2. Platform Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_blueprint.html">3. Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namedtuplex_api.html">4. API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_part_documents.html">5. Documents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="class_basics.html">5.1. Implementation Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abc_doc.html">5.2. Class Concept</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_features.html">5.3. Class Features</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.4. SW Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creation-of-the-named-tuple">5.4.1. Creation of the Named Tuple</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creation-by-inheritance">5.4.1.1. Creation by Inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creation-by-the-factory">5.4.1.2. Creation by the Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resulting-class-structure">5.4.1.3. Resulting Class Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-interface-parameters-namedtuplex">5.4.2. Class Interface Parameters NamedTupleX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fields-and-fielddefaults">5.4.2.1. _fields and _fielddefaults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module">5.4.2.2. _module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rename">5.4.2.3. _rename</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuplefactory">5.4.2.4. _tuplefactory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verbose">5.4.2.5. _verbose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters-of-namedtuple">5.4.3. Parameters of namedtuple</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_modules.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_indices.html">7. Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_resources.html">8. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">9. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">10. External References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_license.html">11. Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Howto</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">namedtuplex</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index_part_documents.html">5. Documents</a> &raquo;</li>
+        
+      <li>5.4. The SW-Design of <em>namedtuplex</em></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sw_design.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-sw-design-of-namedtuplex">
+<span id="swdesign"></span><h1>5.4. The SW-Design of <em>namedtuplex</em><a class="headerlink" href="#the-sw-design-of-namedtuplex" title="Permalink to this headline">¶</a></h1>
+<p>The basic <a class="reference internal" href="class_basics.html#concepts-class-implementation"><span class="std std-ref">Call Flow of Class Creation</span></a> is
+adapted here to the special requirements of the creation of named tuples.</p>
+<div class="section" id="creation-of-the-named-tuple">
+<span id="creationofthenamedtuple"></span><h2>5.4.1. Creation of the Named Tuple<a class="headerlink" href="#creation-of-the-named-tuple" title="Permalink to this headline">¶</a></h2>
+<p>The class provided by the call of the factory function <em>namedtupledefs.namedtuple</em>, or
+alternatively by the <a class="reference internal" href="namedtuplex_api.html#param-tuplefactory"><span class="std std-ref">tuplefactory</span></a> <em>collections.namedtuple</em>,
+is extended by the abstract class <em>NamedTupleXABC</em>.
+The fabrication of the class is processed by the metaclass <em>NamedTupleXABCMeta</em>, where
+the provided named tuple class is set as a base class of the application interface <em>NamedTupleXABC</em>.
+The abstract class <em>NamedTupleXABC</em> provides a base class for the feature extension implemented by
+the class <em>AppClass</em> through inheritance.</p>
+<div class="figure align-center" id="id8" style="width: 600px">
+<span id="figure-classconstructionlayersnamedtuple"></span><a class="reference external image-reference" href="_static/class-construction-layers-namedtuple.png"><img alt="_images/class-construction-layers-namedtuple.png" src="_images/class-construction-layers-namedtuple.png" /></a>
+<p class="caption"><span class="caption-text">Figure: Class Construction Layers for namedtuple <a class="reference external" href="_static/class-construction-layers-namedtuple.png"><img alt="zoom" src="_images/zoom.png" style="width: 16px;" /></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="creation-by-inheritance">
+<h3>5.4.1.1. Creation by Inheritance<a class="headerlink" href="#creation-by-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>The class interfaces <a class="reference internal" href="namedtuplex.abc.html#doc-return-namedtuplexabc"><span class="std std-ref">namedtuplex.abc.NamedTupleXABC</span></a>
+and <a class="reference internal" href="namedtuplex.abc.html#doc-return-namedtuplexabc"><span class="std std-ref">namedtuplex.abc.ABC</span></a>
+provide the creation of the named tuple by inheritance.
+The parameters are designed to be passed as atributes in this case.
+E.g. the attribute <em>_fields</em> of the <em>namedtuple</em> contains the symbolic names of the fields of the <em>tuple</em>.
+For the complete list refer to <a class="reference internal" href="namedtuplex_api.html#api-params-full"><span class="std std-ref">API prameters</span></a>.</p>
+</div>
+<div class="section" id="creation-by-the-factory">
+<h3>5.4.1.2. Creation by the Factory<a class="headerlink" href="#creation-by-the-factory" title="Permalink to this headline">¶</a></h3>
+<p>The class factory <a class="reference internal" href="namedtuplex.abc.html#namedtuplex-appparts"><span class="std std-ref">namedtuplex.abc.namedtuplex</span></a> provides a call interface with the dynamic creation
+of the class.
+The factory therefore supports more options, which are passed as call parameters to the function.</p>
+<p>The field names are provided for the standard call of <em>namedtupledefs.namedtuple</em> as parameters,
+for example with <em>fielddefaults</em>:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">namedtupledefs</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;ClsName&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;field0&#39;</span><span class="p">,</span> <span class="s1">&#39;field1&#39;</span><span class="p">,),</span> <span class="n">fielddefaults</span><span class="o">=</span><span class="p">(</span><span class="n">value1</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>or</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">namedtupledefs</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;ClsName&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;field0&#39;</span><span class="p">,</span> <span class="s1">&#39;field1&#39;</span><span class="p">,),</span> <span class="n">fielddefaults</span><span class="o">=</span><span class="p">(</span><span class="n">value0</span><span class="p">,</span> <span class="n">value1</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>For the standard library of <em>collections.namedtuple</em> without the <em>fielddefaults</em> feature, e.g.:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;ClsName&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;field0&#39;</span><span class="p">,</span> <span class="s1">&#39;field1&#39;</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="resulting-class-structure">
+<h3>5.4.1.3. Resulting Class Structure<a class="headerlink" href="#resulting-class-structure" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id9" style="width: 750px">
+<span id="figure-design-structure"></span><a class="reference external image-reference" href="_static/structure.png"><img alt="_images/structure.png" src="_images/structure.png" /></a>
+<p class="caption"><span class="caption-text">Figure: Class Diagram of NamedTupleX <a class="reference external" href="_static/structure.png"><img alt="zoom" src="_images/zoom.png" style="width: 16px;" /></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="class-interface-parameters-namedtuplex">
+<span id="interfaceparametersnamedtuplex"></span><h2>5.4.2. Class Interface Parameters NamedTupleX<a class="headerlink" href="#class-interface-parameters-namedtuplex" title="Permalink to this headline">¶</a></h2>
+<p>The <em>namedtuplex</em> package extends the standard interface.
+This includes multiple parameters provided as class variables for
+the class and the instance creation, see also <a class="reference internal" href="references.html#customclass" id="id1"><span>[customclass]</span></a>.
+For an example of the processing and inheretance of <em>namedtuple</em> see
+implementation by <em>Jan  Kaliszewski</em> <a class="reference internal" href="references.html#jankali" id="id2"><span>[JANKALI]</span></a> <a class="reference internal" href="references.html#namedtupleabc" id="id3"><span>[NAMEDTUPLEABC]</span></a>.</p>
+<p>The provided class variables of derived classes are processed by the <em>__new__</em> method of the
+metaclass <em>NamedTupleXABCMeta</em>.</p>
+<div class="section" id="fields-and-fielddefaults">
+<span id="design-fielddefaults"></span><span id="design-fields"></span><span id="index-0"></span><h3>5.4.2.1. _fields and _fielddefaults<a class="headerlink" href="#fields-and-fielddefaults" title="Permalink to this headline">¶</a></h3>
+<p>The <em>namedtuplex</em> supports the parameters <em>_fields</em> and <em>_fielddefaults</em>.</p>
+<p>The implementation is based on the namedtuple factory.
+When default values are required, these are delegated to the factory class,
+which in case of <em>namedtupledefs.namedtuple</em> generates the appropriate default
+values for the call interface of the created class.
+Thus the default based dynamic class creation is required by the <em>__new__</em> method of
+the adaptation of the tuple fields at the creation time by the <em>__new__</em> method of
+<a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a>.</p>
+<p>In case of the factory <em>collections.namedtuple</em> default values are currently not
+available.</p>
+<div class="figure align-center" id="id10" style="width: 700px">
+<span id="figure-classconstructionlayersnamedtuplex"></span><a class="reference external image-reference" href="_static/class-construction-namedtuplex.png"><img alt="_images/class-construction-namedtuplex.png" src="_images/class-construction-namedtuplex.png" /></a>
+<p class="caption"><span class="caption-text">Figure: Custom Class Construction NamedTupleX <a class="reference external" href="_static/class-construction-namedtuplex.png"><img alt="zoom" src="_images/zoom.png" style="width: 16px;" /></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<p>The following calls are processed interfaces in the given order.
+The index numbers <em>figure</em> refers to the marks at the previous figure.</p>
+<blockquote>
+<div><div class="indextab">
+<div class="nonbreakheadtab">
+<div class="autocoltab"><table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 24%" />
+<col style="width: 31%" />
+<col style="width: 28%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>interface</p></th>
+<th class="head"><p>figure</p></th>
+<th class="head"><p>processed class/object</p></th>
+<th class="head"><p>called method</p></th>
+<th class="head"><p>class param</p></th>
+<th class="head"><p>processed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>__new__</em></p></td>
+<td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p><a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabc"><span class="std std-ref">NamedTupleXABC</span></a></p></td>
+<td><p><a class="reference internal" href="namedtuplex.abc.html#namedtuplexabcmeta-new"><span class="std std-ref">NamedTupleXABCMeta.__new__</span></a></p></td>
+<td><p><a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a></p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>__init__</em></p></td>
+<td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p><em>NamedTupleXABC</em></p></td>
+<td><p><em>NamedTupleXABCMeta.__init__</em></p></td>
+<td><p><em>NamedTupleXABC</em></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><em>__new__</em></p></td>
+<td><ol class="arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p><em>AppTupleClass</em></p></td>
+<td><p><a class="reference internal" href="namedtuplex.abc.html#namedtuplexabcmeta-new"><span class="std std-ref">NamedTupleXABCMeta.__new__</span></a></p></td>
+<td><p><a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a></p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>__init__</em></p></td>
+<td><ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p><em>AppTupleClass</em></p></td>
+<td><p><em>NamedTupleXABCMeta.__init__</em></p></td>
+<td><p><em>AppTupleClass</em></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><em>__new__</em></p></td>
+<td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p><em>AppTupleClass</em></p></td>
+<td><p><em>AppTupleClass.__new__</em></p></td>
+<td><p><em>AppTupleClass</em></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>__new__</em></p></td>
+<td><ol class="arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p><em>NamedTupleXABC</em></p></td>
+<td><p><em>NamedTupleXABC.__new__</em></p></td>
+<td><p><em>AppTupleClass</em></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><em>__init__</em></p></td>
+<td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p><em>AppTupleClass</em> (obj)</p></td>
+<td><p><em>AppTupleClass.__init__</em></p></td>
+<td><p><em>object&lt;AppTupleClass&gt;</em></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>__init__</em></p></td>
+<td><ol class="arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p><em>NamedTupleXABC</em> (obj)</p></td>
+<td><p><em>NamedTupleXABC.__init__</em></p></td>
+<td><p><em>object&lt;AppTupleClass&gt;</em></p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div></blockquote>
+<p>The application needs to define the marked “<em>A</em>” class member values <a class="reference internal" href="namedtuplex_api.html#param-fieldnames"><span class="std std-ref">_fields</span></a>
+and optional the <a class="reference internal" href="namedtuplex_api.html#param-fielddefaults"><span class="std std-ref">_fielddefaults</span></a>.
+The value <a class="reference internal" href="namedtuplex_api.html#param-fieldnames"><span class="std std-ref">_fields</span></a> defines the number of fields and their symbolic names for the named tuple,
+while the <a class="reference internal" href="namedtuplex_api.html#param-fielddefaults"><span class="std std-ref">_fielddefaults</span></a>  member defines function interface style defaults <a class="reference internal" href="references.html#pyfunc" id="id4"><span>[PYFUNC]</span></a>.
+The <a class="reference internal" href="namedtuplex_api.html#param-fieldnames"><span class="std std-ref">_fields</span></a> value is processed at the marked inteface “<em>1.</em>”, while
+the <a class="reference internal" href="namedtuplex_api.html#param-fielddefaults"><span class="std std-ref">_fielddefaults</span></a> value is processed at the marked interface “<em>3.</em>”.</p>
+<p>The following example demonstrates the partial default values:</p>
+<blockquote>
+<div><pre class="literal-block">class AppTupleClass(NamedTupleXABC):
+   <a class="reference internal" href="namedtuplex_api.html#param-fieldnames"><span class="std std-ref">_fields</span></a> = ('a', 'b', 'c', 'd')
+   <a class="reference internal" href="namedtuplex_api.html#param-fielddefaults"><span class="std std-ref">_fielddefaults</span></a> = (('c', 33), ('b', 22), ('d', 44))  # <strong>order is irrelevant</strong>
+
+myobj = AppTupleClass(11, 22)  # <strong>allows partial calls</strong>
+
+print(myobj)</pre>
+</div></blockquote>
+<p>results in:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The following example demonstrates the case default values only.
+In this case the default values replace the <em>_fileds</em> parameter completely:</p>
+<blockquote>
+<div><pre class="literal-block">class AppTupleClass(NamedTupleXABC):
+   <a class="reference internal" href="namedtuplex_api.html#param-fieldnames"><span class="std std-ref">_fields</span></a> = ()                                                   # when empty
+   <a class="reference internal" href="namedtuplex_api.html#param-fielddefaults"><span class="std std-ref">_fielddefaults</span></a> = (('a', 11), ('c', 33), ('b', 22), ('d', 44))  # _fielddefaults is used - allows empty calls
+                                                                  # <strong>order is relevant</strong>
+
+myobj = AppTupleClass()  # <strong>allows empty calls</strong>
+
+print(myobj)</pre>
+</div></blockquote>
+<p>results in:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">44</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>See also <a class="reference internal" href="namedtuplex_api.html#param-fieldnames"><span class="std std-ref">fields and _fields</span></a> and <a class="reference internal" href="namedtuplex_api.html#param-fielddefaults"><span class="std std-ref">fielddefaults and _fielddefaults</span></a>.</p>
+</div>
+<div class="section" id="module">
+<span id="design-module"></span><span id="index-1"></span><h3>5.4.2.2. _module<a class="headerlink" href="#module" title="Permalink to this headline">¶</a></h3>
+<p>The module name is available beginning with <em>Python-3.6</em>.
+The value replaces the member variable <em>__module__</em> of the created tuple.</p>
+<p>See also <a class="reference internal" href="namedtuplex_api.html#param-module"><span class="std std-ref">module and _module</span></a>.</p>
+</div>
+<div class="section" id="rename">
+<span id="design-rename"></span><span id="index-2"></span><h3>5.4.2.3. _rename<a class="headerlink" href="#rename" title="Permalink to this headline">¶</a></h3>
+<p>The <em>rename</em> defines the optional renaming of invalid field names.
+This is transparently passed to the <em>namedtuple</em> class.</p>
+<p>See also <a class="reference internal" href="namedtuplex_api.html#param-rename"><span class="std std-ref">rename and _rename</span></a>.</p>
+</div>
+<div class="section" id="tuplefactory">
+<span id="design-tuplefactory"></span><span id="index-3"></span><h3>5.4.2.4. _tuplefactory<a class="headerlink" href="#tuplefactory" title="Permalink to this headline">¶</a></h3>
+<p>The <em>tuplefactory</em> defines the used factory function for the creation of the named tuple.
+This is by default <em>namedtupledefs.namedtuple</em>, and could be changed to a compatible
+alternativesuch as <em>collections.namedtuple</em>.</p>
+<p>See also <a class="reference internal" href="namedtuplex_api.html#param-tuplefactory"><span class="std std-ref">tuplefactory and _tuplefactory</span></a>.</p>
+</div>
+<div class="section" id="verbose">
+<span id="design-verbose"></span><span id="index-4"></span><h3>5.4.2.5. _verbose<a class="headerlink" href="#verbose" title="Permalink to this headline">¶</a></h3>
+<p>The <em>verbose</em> is processed by the <em>namedtuple</em> factory and prints the dynamic created
+tuple class <a class="reference internal" href="references.html#namedtuple" id="id5"><span>[namedtuple]</span></a> and <a class="reference internal" href="references.html#namedtupledefs" id="id6"><span>[namedtupledefs]</span></a>.
+Thi parameter is for debugging only.</p>
+<p>See also <a class="reference internal" href="namedtuplex_api.html#param-verbose"><span class="std std-ref">verbose and _verbose</span></a>.</p>
+</div>
+</div>
+<div class="section" id="parameters-of-namedtuple">
+<h2>5.4.3. Parameters of namedtuple<a class="headerlink" href="#parameters-of-namedtuple" title="Permalink to this headline">¶</a></h2>
+<p>The following parameters are passed to the <em>collections.namedtuple</em> <a class="reference internal" href="references.html#namedtuple" id="id7"><span>[namedtuple]</span></a>.</p>
+<ul class="simple" id="index-5">
+<li><p><a class="reference internal" href="namedtuplex_api.html#param-tuplefactory"><span class="std std-ref">tuplefactory</span></a></p></li>
+<li><p><a class="reference internal" href="namedtuplex_api.html#param-module"><span class="std std-ref">module</span></a></p></li>
+<li><p><a class="reference internal" href="namedtuplex_api.html#param-rename"><span class="std std-ref">rename</span></a></p></li>
+<li><p><a class="reference internal" href="namedtuplex_api.html#param-verbose"><span class="std std-ref">verbose</span></a></p></li>
+</ul>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="index_modules.html" class="btn btn-neutral float-right" title="6. Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="class_features.html" class="btn btn-neutral float-left" title="5.3. The Supported Class Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (C) 2016 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+      <span class="lastupdated">
+        Last updated on Dec 06, 2019.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

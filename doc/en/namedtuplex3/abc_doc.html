@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2. Class Concept of namedtuplex.abc &mdash; namedtuplex  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.3. The Supported Class Features" href="class_features.html" />
+    <link rel="prev" title="4.1. The Implementation Basics of Classes" href="class_basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Shortcuts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">NamedtupleX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_cockpit.html">apidoc</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index_part_abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_platform_support.html">2. Platform Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_blueprint.html">3. Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namedtuplex_api.html">1. API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_part_documents.html">4. Documents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="class_basics.html">4.1. Implementation Basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. Class Concept</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inheritance-and-mixin">4.2.1. Inheritance and Mixin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inheritance-of-members">4.2.2. Inheritance of Members</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">4.2.2.1. Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#properties">4.2.2.2. Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#methods">4.2.2.3. Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-resulting-concept">4.2.2.4. The resulting Concept</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#inheritance-of-abstract-classes">4.2.3. Inheritance of Abstract Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resources">4.2.4. Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="class_features.html">4.3. Class Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sw_design.html">4.4. SW Design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_modules.html">5. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_indices.html">6. Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_resources.html">7. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">8. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">9. External References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_license.html">10. Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Howto</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">namedtuplex</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index_part_documents.html">4. Documents</a> &raquo;</li>
+        
+      <li>4.2. Class Concept of namedtuplex.abc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/abc_doc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="class-concept-of-namedtuplex-abc">
+<span id="doc-namedtuplex-abc-doc"></span><h1>4.2. Class Concept of namedtuplex.abc<a class="headerlink" href="#class-concept-of-namedtuplex-abc" title="Permalink to this headline">¶</a></h1>
+<p>The module <em>namedtuplex.abc</em> implements an abstract class for the creation named tuples.
+The API is used as a replacement of the standard interface <em>collections.namedtupel</em>.
+The current implementation extends actually the standard implementation.
+This includes beneath enhancements of the call parameters in particular the support of inheritance
+and mixin.</p>
+<div class="section" id="inheritance-and-mixin">
+<h2>4.2.1. Inheritance and Mixin<a class="headerlink" href="#inheritance-and-mixin" title="Permalink to this headline">¶</a></h2>
+<p>The <em>collections.namedtuple</em> classes provide fast processing with acceptable little loss
+compared to the pure <em>tuple</em>.
+Thus the design goal was to keep the low resource requirement and performance impact, while
+adding features like attributes/properties at the creation time.
+The main data and inheretence design is hereby based on the creation of a data array as a <em>namedtuple</em>,
+and add specific features including properties with read-out features to the data set.</p>
+<p>A real example is here the representaiton of a file system path.
+The physical file location, and thus the abstract logical lcation remains constant,
+while the representation may vary by several specifications.
+The representation may for example be in accordance to teh specification of a <em>URL</em>, <em>UNC</em>, <em>POSIX</em>,
+or as a traditional <em>Windows</em> path, a long path, a long-UNC path, etc.
+The fields of the path vector are here the same for all, while the assembly of the output varies.</p>
+<p>The concept of a base data vector with the option to extend this class with features by inheritance
+implies the following rules:</p>
+<ol class="arabic simple">
+<li><p>The number and the fields are not inherited, neither changed in the parent class.</p></li>
+<li><p>Due to the goal of keeping the performance impact low, no tree-walk algorithm for scattered processing
+is implemented.</p></li>
+</ol>
+<p>As a result:</p>
+<ol class="arabic">
+<li><p>When inheriting the fields of the parent class could be integrated to the class manualy:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BaseClass</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+   <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DerivedClass</span><span class="p">(</span><span class="n">BaseClass</span><span class="p">):</span>
+   <span class="n">_fields</span> <span class="o">=</span> <span class="n">BaseClass</span><span class="o">.</span><span class="n">_fields</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Or by recreation:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DerivedClass</span><span class="p">(</span><span class="n">BaseClass</span><span class="p">):</span>
+   <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>This principle applies tho mixin classes as well.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BaseClass0</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+   <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">BaseClass1</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+   <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,)</span>
+
+<span class="k">class</span> <span class="nc">DerivedClass</span><span class="p">(</span><span class="n">BaseClass0</span><span class="p">,</span> <span class="n">BaseClass1</span><span class="p">):</span>
+   <span class="k">pass</span>
+
+ <span class="n">m</span> <span class="o">=</span>  <span class="n">DerivedClass</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>resulting in:</p>
+</li>
+</ol>
+</div>
+<div class="section" id="inheritance-of-members">
+<h2>4.2.2. Inheritance of Members<a class="headerlink" href="#inheritance-of-members" title="Permalink to this headline">¶</a></h2>
+<p>The inheritance and mixin of general members follows the standard <em>Python</em> rules.</p>
+<div class="section" id="attributes">
+<h3>4.2.2.1. Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<p>Simple member variables as attributes are handled in a standard manner.
+These basically found a pool of values which are contained the resulting class
+and will be processed by the common hierarchy.
+Thus these are either hidden by a lower class or could be transparently accessed.</p>
+</div>
+<div class="section" id="properties">
+<h3>4.2.2.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<p>Properties provide means for the dynamic creation of teh accessed data.
+This is in particular helpful when a basic data set is accessed for multiple views, which
+requires different formatting including different subsets.
+The properties are inherited in accordance to the standard <em>Python</em> mechanisms,
+thus could be used without additional restrictions.</p>
+</div>
+<div class="section" id="methods">
+<h3>4.2.2.3. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<p>The characteristics of the methods due to the inheritance is basically the same as for the propereties.
+Thus could be used without additional restrictions.</p>
+</div>
+<div class="section" id="the-resulting-concept">
+<h3>4.2.2.4. The resulting Concept<a class="headerlink" href="#the-resulting-concept" title="Permalink to this headline">¶</a></h3>
+<p>The concept implemented by <em>namedtuplex</em> targets mainly the creation of a data class as a named tuple
+with a core set of features.
+Than the add-on of additional features by derived classes and mixins.</p>
+<p>The modification of the tuple with it’s fields is still supported, but requires manual interaction
+by code.</p>
+</div>
+</div>
+<div class="section" id="inheritance-of-abstract-classes">
+<span id="doc-namedtuplex-abstract"></span><h2>4.2.3. Inheritance of Abstract Classes<a class="headerlink" href="#inheritance-of-abstract-classes" title="Permalink to this headline">¶</a></h2>
+<p>The inheritance of abstract classes is basically the same as of the non-abstract classes.
+The difference is the absence of a <em>_field</em> class member, which is treated by the method
+<a class="reference internal" href="namedtuplex.abc.html#namedtuplexabcmeta-new"><span class="std std-ref">NamedTupleXABCMeta.__new__()</span></a>.</p>
+</div>
+<div class="section" id="resources">
+<span id="namedtuplex-references2"></span><h2>4.2.4. Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="references.html#namedtuple" id="id1"><span>[namedtuple]</span></a>  lib/collections</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="class_features.html" class="btn btn-neutral float-right" title="4.3. The Supported Class Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="class_basics.html" class="btn btn-neutral float-left" title="4.1. The Implementation Basics of Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (C) 2016 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+      <span class="lastupdated">
+        Last updated on Dec 06, 2019.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

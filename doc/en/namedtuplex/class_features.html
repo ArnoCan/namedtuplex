@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.3. The Supported Class Features &mdash; namedtuplex  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5.4. The SW-Design of namedtuplex" href="sw_design.html" />
+    <link rel="prev" title="5.2. Class Concept of namedtuplex.abc" href="abc_doc.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Shortcuts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">NamedtupleX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_cockpit.html">apidoc</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index_part_abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_platform_support.html">2. Platform Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_blueprint.html">3. Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namedtuplex_api.html">4. API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_part_documents.html">5. Documents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="class_basics.html">5.1. Implementation Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abc_doc.html">5.2. Class Concept</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. Class Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#abstract-inheritance">5.3.1. Abstract Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-abstract-inheritance">5.3.2. Non-Abstract Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-values">5.3.3. Default Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inheritance-parameters">5.3.4. Inheritance Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sw_design.html">5.4. SW Design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_modules.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_indices.html">7. Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_resources.html">8. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">9. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">10. External References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_license.html">11. Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Howto</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">namedtuplex</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index_part_documents.html">5. Documents</a> &raquo;</li>
+        
+      <li>5.3. The Supported Class Features</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/class_features.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-supported-class-features">
+<span id="features-class-implementation"></span><h1>5.3. The Supported Class Features<a class="headerlink" href="#the-supported-class-features" title="Permalink to this headline">¶</a></h1>
+<p>The package <em>namedtuplex</em> provides the abstract base class
+<em>NamedTupleXABC</em> of type <em>NamedTupleXABCMeta</em>
+for factories of named tuples
+with configurable inheritance features.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">NamedTupleXABC</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name0&#39;</span><span class="p">,</span> <span class="s1">&#39;name1&#39;</span><span class="p">,)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The parameters for the control of the derivation could be simply set by class member variables.
+The classes could serve as base classes and mixin-classes themself.</p>
+<div class="section" id="abstract-inheritance">
+<h2>5.3.1. Abstract Inheritance<a class="headerlink" href="#abstract-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>The class <em>NamedTupleXABC</em>  could be used as a base class for abstract classes including the mixin
+of multiple derived abstract classes.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">NamedTupleXABC</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassABC</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="n">myvar0</span> <span class="o">=</span> <span class="mi">4711</span>
+    <span class="n">myvar1</span> <span class="o">=</span> <span class="mi">815</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">myvalue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">myvar0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">myvar1</span>
+
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">MyClassABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name0&#39;</span><span class="p">,</span> <span class="s1">&#39;name1&#39;</span><span class="p">,)</span>  <span class="c1"># chnages now to a non-abstract class</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">myvalue</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The presence of the member variable <em>_fields</em> determines hereby the transformation of an abstract class
+into a non-abstract class.</p>
+</div>
+<div class="section" id="non-abstract-inheritance">
+<h2>5.3.2. Non-Abstract Inheritance<a class="headerlink" href="#non-abstract-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>The resulting non-abstract classes could serve as base classes again,
+including to be used as mixin-classes.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">ABC</span>
+
+
+<span class="k">class</span> <span class="nc">MyMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">myvar</span> <span class="o">=</span> <span class="mi">4711</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassABC</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name2&#39;</span><span class="p">,</span> <span class="s1">&#39;name3&#39;</span><span class="p">,)</span>  <span class="c1"># chnages now to a non-abstract class</span>
+
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">MyClassABC</span><span class="p">,</span> <span class="n">MyMixin</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name0&#39;</span><span class="p">,</span> <span class="s1">&#39;name1&#39;</span><span class="p">,)</span>  <span class="c1"># chnages now to a non-abstract class</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The main difference of “<em>transformed</em>” non-abstract classes to the standard inheritance
+is here the optional control of the processing of the special class member variables
+for the configuration of the named tuple factory.
+The class member <em>_merge</em> controls, whether these will be superposed by derived classes,
+or merged into the corresponding class variables of the derived class.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">ABC</span>
+
+
+<span class="k">class</span> <span class="nc">MyMixin</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name2&#39;</span><span class="p">,</span> <span class="s1">&#39;name3&#39;</span><span class="p">,)</span>  <span class="c1"># chnages now to a non-abstract class</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassABC</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">myvar</span> <span class="o">=</span> <span class="mi">4711</span>
+
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">MyClassABC</span><span class="p">,</span> <span class="n">MyMixin</span><span class="p">,):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name0&#39;</span><span class="p">,</span> <span class="s1">&#39;name1&#39;</span><span class="p">,)</span>  <span class="c1"># chnages now to a non-abstract class</span>
+    <span class="n">_merge</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This behaviour could be altered for each inheritance level separately.</p>
+</div>
+<div class="section" id="default-values">
+<h2>5.3.3. Default Values<a class="headerlink" href="#default-values" title="Permalink to this headline">¶</a></h2>
+<p>The metaclass <em>NamedTupleXABCMeta</em> uses a variable as the reference to the
+factory for the named tuple.
+The metaclass relies hereby for the feature of default values on the selected
+factory.
+The default factory is <em>namedtupledefs.namedtuple</em> <a class="reference internal" href="references.html#namedtupledefs" id="id1"><span>[namedtupledefs]</span></a>,
+which is a patched version of the standard namedtuple <em>collections.namedtuple</em>
+with support for default values.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">NamedTupleXABC</span>
+
+
+<span class="k">class</span> <span class="nc">MyMixin</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name2&#39;</span><span class="p">,</span> <span class="s1">&#39;name3&#39;</span><span class="p">,)</span>  <span class="c1"># chnages now to a non-abstract class</span>
+    <span class="n">_fielddefaults</span> <span class="o">=</span> <span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassABC</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">myvar</span> <span class="o">=</span> <span class="mi">4711</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">MyClassABC</span><span class="p">,</span> <span class="n">MyMixin</span><span class="p">,):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;name0&#39;</span><span class="p">,</span> <span class="s1">&#39;name1&#39;</span><span class="p">,)</span>  <span class="c1"># chnages now to a non-abstract class</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="inheritance-parameters">
+<h2>5.3.4. Inheritance Parameters<a class="headerlink" href="#inheritance-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The class <strong>NamedTupleXABC</strong> supports various parameters for the configuration of
+the class factory resulting in the inheritance behaviour.</p>
+<blockquote>
+<div><style>
+   div.tmptab table td:nth-child(1) {
+      width: 30ch;
+   }
+</style>
+
+<div class="tmptab">
+<div class="overviewtab">
+<div class="nonbreakheadtab">
+<div class="autocoltab"><table class="docutils align-default">
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 42%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="namedtuplex_api.html#param-fieldnames"><span class="std std-ref">_fields</span></a></p></td>
+<td><p>field names</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="namedtuplex_api.html#param-fielddefaults"><span class="std std-ref">_fielddefaults</span></a></p></td>
+<td><p>default values for fields</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="namedtuplex_api.html#param-merge"><span class="std std-ref">_merge</span></a></p></td>
+<td><p>merge two objects</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="namedtuplex_api.html#param-module"><span class="std std-ref">_module</span></a></p></td>
+<td><p>for Python-3.6+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="namedtuplex_api.html#param-rename"><span class="std std-ref">_rename</span></a></p></td>
+<td><p>replace silently faulty names</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="namedtuplex_api.html#param-tuplefactory"><span class="std std-ref">_tuplefactory</span></a></p></td>
+<td><p>alternative factory</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="namedtuplex_api.html#param-typename"><span class="std std-ref">_typename</span></a></p></td>
+<td><p>name of type for created class</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="namedtuplex_api.html#param-verbose"><span class="std std-ref">_verbose</span></a></p></td>
+<td><p>raise display level</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div></blockquote>
+<p>For details see <a class="reference internal" href="namedtuplex_api.html#namedtuplexapi"><span class="std std-ref">The namedtuplex API</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sw_design.html" class="btn btn-neutral float-right" title="5.4. The SW-Design of namedtuplex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="abc_doc.html" class="btn btn-neutral float-left" title="5.2. Class Concept of namedtuplex.abc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (C) 2016 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+      <span class="lastupdated">
+        Last updated on Dec 06, 2019.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

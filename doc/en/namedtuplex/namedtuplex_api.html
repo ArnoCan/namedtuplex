@@ -1,0 +1,666 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. The namedtuplex API &mdash; namedtuplex  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Documents" href="index_part_documents.html" />
+    <link rel="prev" title="3. Blueprint" href="index_part_blueprint.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Shortcuts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">NamedtupleX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_cockpit.html">apidoc</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index_part_abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_platform_support.html">2. Platform Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_blueprint.html">3. Blueprint</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">4.1. Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fields-and-fields">4.1.1. fields and _fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fielddefaults-and-fielddefaults">4.1.2. fielddefaults and _fielddefaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merge-and-merge">4.1.3. merge and _merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-and-module">4.1.4. module and _module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rename-and-rename">4.1.5. rename and _rename</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typename">4.1.6. typename</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuplefactory-and-tuplefactory">4.1.7. tuplefactory and _tuplefactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verbose-and-verbose">4.1.8. verbose and _verbose</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">4.2. Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_documents.html">5. Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_modules.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_indices.html">7. Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_resources.html">8. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">9. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">10. External References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_license.html">11. Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Howto</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">namedtuplex</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>4. The namedtuplex API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/namedtuplex_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="shortcuttab"><div class="section" id="the-namedtuplex-api">
+<span id="namedtuplexapi"></span><h1>4. The namedtuplex API<a class="headerlink" href="#the-namedtuplex-api" title="Permalink to this headline">¶</a></h1>
+<p>The <em>namedtuplex</em> API covers a variety of interfaces for the processing of
+resource path addresses, and the search of resources.
+The initial set of interfaces forcusses on filesystem resources in a basic distributed
+environment.
+This covers in particular a basic set of call parameters, which are common for a
+subset of the call interfaces.</p>
+<style>
+   div.apisynopsislarge blockquote {
+      font-size: 1.5ch;
+   }
+</style>
+
+<div class="apisynopsislarge">
+<div class="apisynopsis"><ul id="if-classes">
+<li><p><strong>classes</strong></p>
+<blockquote>
+<div><pre class="literal-block"><a class="reference internal" href="namedtuplex.abc.html#return-abc"><span class="std std-ref">ABC (alias of NamedTupleXABC)</span></a>
+<a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabc"><span class="std std-ref">NamedTupleXABC</span></a></pre>
+</div></blockquote>
+</li>
+</ul>
+<ul id="if-classeshelper">
+<li><p><strong>helper classes</strong></p>
+<blockquote>
+<div><pre class="literal-block"><a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a></pre>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div><p id="api-params-full"><span id="api-params-basic"></span>The following table displays the standard parameters supported by the interfaces.</p>
+<blockquote>
+<div><div class="tabcolumncolor">
+<div class="nonbreakheadtab">
+<div class="autocoltab"><table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 28%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>interface</p></th>
+<th class="head"><p>factories</p></th>
+<th class="head"></th>
+<th class="head"><p>classes</p></th>
+<th class="head"></th>
+</tr>
+<tr class="row-even"><th class="head"></th>
+<th class="head"><p>collections.namedtuple</p></th>
+<th class="head"><p>namedtupledefs.namedtuple</p></th>
+<th class="head"><p><a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="sw_design.html#creationofthenamedtuple"><span class="std std-ref">AppClass</span></a></p></th>
+</tr>
+<tr class="row-odd"><th class="head"><p>parameter</p></th>
+<th class="head"><p><a class="reference internal" href="references.html#namedtuple" id="id1"><span>[namedtuple]</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="references.html#namedtupledefs" id="id2"><span>[namedtupledefs]</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabc"><span class="std std-ref">NamedTupleXABC</span></a></p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#param-fieldnames"><span class="std std-ref">fields</span></a></p></td>
+<td><p>c</p></td>
+<td><p>c</p></td>
+<td><p><a class="reference internal" href="#param-fieldnames"><span class="std std-ref">m+c</span></a></p></td>
+<td><p><a class="reference internal" href="#param-fieldnames"><span class="std std-ref">m</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#param-fielddefaults"><span class="std std-ref">fielddefaults</span></a> (1)</p></td>
+<td><p>–</p></td>
+<td><p>c</p></td>
+<td><p><a class="reference internal" href="#param-fielddefaults"><span class="std std-ref">m+c</span></a></p></td>
+<td><p><a class="reference internal" href="#param-fielddefaults"><span class="std std-ref">m</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#param-merge"><span class="std std-ref">merge</span></a></p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+<td><p><a class="reference internal" href="#param-merge"><span class="std std-ref">m+c</span></a></p></td>
+<td><p><a class="reference internal" href="#param-merge"><span class="std std-ref">m</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#param-module"><span class="std std-ref">module</span></a> (2) (3)</p></td>
+<td><p>c</p></td>
+<td><p>c</p></td>
+<td><p><a class="reference internal" href="#param-module"><span class="std std-ref">m+c</span></a></p></td>
+<td><p><a class="reference internal" href="#param-module"><span class="std std-ref">m</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#param-rename"><span class="std std-ref">rename</span></a> (3)</p></td>
+<td><p>c</p></td>
+<td><p>c</p></td>
+<td><p><a class="reference internal" href="#param-rename"><span class="std std-ref">m+c</span></a></p></td>
+<td><p><a class="reference internal" href="#param-rename"><span class="std std-ref">m</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#param-tuplefactory"><span class="std std-ref">tuplefactory</span></a></p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+<td><p><a class="reference internal" href="#param-tuplefactory"><span class="std std-ref">m+c</span></a></p></td>
+<td><p><a class="reference internal" href="#param-tuplefactory"><span class="std std-ref">m</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#param-typename"><span class="std std-ref">typename</span></a></p></td>
+<td><p>c</p></td>
+<td><p>c</p></td>
+<td><p><a class="reference internal" href="#param-typename"><span class="std std-ref">s</span></a></p></td>
+<td><p><a class="reference internal" href="#param-typename"><span class="std std-ref">s</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#param-verbose"><span class="std std-ref">verbose</span></a> (3)</p></td>
+<td><p>c</p></td>
+<td><p>c</p></td>
+<td><p><a class="reference internal" href="#param-verbose"><span class="std std-ref">m+c</span></a></p></td>
+<td><p><a class="reference internal" href="#param-verbose"><span class="std std-ref">m</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><dl>
+<dt><strong>m</strong>:</dt><dd><p>Parameter as class member variable, which is processed byt the metaclass for class creation
+and/or instance creation.
+In case of member variable these are prefixed by an underscore ‘_’.
+For example the members <strong>_fields</strong> and <strong>_fielddefaults</strong>:</p>
+<blockquote>
+<div><pre class="literal-block">class MyClassNonABC(namedtuplex.abc.NamedTupleXABC):
+   <strong>_fields</strong> = ('a', 'b',)                      # processed during class creation
+   <strong>_fielddefaults</strong> = (('a', 11), ('b', 22))        # processed during class creation and/or instance creation</pre>
+</div></blockquote>
+</dd>
+<dt><strong>s</strong>:</dt><dd><p>Parameter by standard class definition, e.g. the mixin <strong>MyMixinClass</strong>:</p>
+<blockquote>
+<div><pre class="literal-block">class MyClassNonABC(<strong>MyMixinClass</strong>, namedtuplex.abc.NamedTupleXABC):
+   _fields = ('a', 'b',)</pre>
+</div></blockquote>
+</dd>
+</dl>
+<p><strong>c</strong>:</p>
+<blockquote>
+<div><p>Parameter as call parameters, either for methods, or functions.
+The method interfaces provide here parameters to be interpreted by the methods of static
+defined class members, while the function interface provide parameters for the dynamic
+creation of the assembled classes.</p>
+<p>For example the parameters <strong>rename</strong> and <strong>fielddefaults</strong> are used by
+the factory <em>namedtuplex.abc.namedtuplex()</em> for the creation of the extended tuple
+class template as well as for the creation of the class.
+E.g.:</p>
+<blockquote>
+<div><pre class="literal-block">namedtuplex.abc.namedtuplex(
+   'MyClass',                              # passed to <em>collections.namedtuple</em>
+   ('a', 'b',),                            # processed and passed to <em>collections.namedtuple</em>
+   rename=True,                            # processed and passed to <em>collections.namedtuple</em>
+   fielddefaults=(('a', 11), ('b', 22),)   # processed by <strong>__new__</strong> for class and instance creation
+)</pre>
+</div></blockquote>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>(c)</strong>:</dt><dd><p>Call parameters provided by the system interface, e.g. for the <em>__new__</em> call.</p>
+</dd>
+<dt><strong>(1)</strong>:</dt><dd><p>Depends on the actual <em>tuplefactory</em>.</p>
+</dd>
+<dt><strong>(2)</strong>:</dt><dd><p>Depends on the implementation, <em>Python3.6+</em>.</p>
+</dd>
+<dt><strong>(3)</strong>:</dt><dd><p>Optional parameters, these are venetually not available in all cases.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>The inheritance  of the special class members <em>_fields</em> and <em>_fielddefaults</em>
+is based on two behaviour patterns controlled by the member <em>_merge</em>.
+When the value of <em>_merge</em> is <em>True</em>, the values of <em>_fileds</em> and <em>_fielddefaults</em>
+are merged by <em>right-hand</em> concatenation to the values from the parent class.
+In case of <em>mixin</em> the values are merged by <em>from-left-to-right</em>
+concatenation to the values defined by the derived class.
+The values of <em>_fielddefaults</em> are merged by the required
+compliance to the behaviour of function defauls <a class="reference internal" href="references.html#pyfunc" id="id3"><span>[PYFUNC]</span></a>.
+Thus with a resulting right-hand side continous tuple of default values.</p>
+<p>The following table depicts the inheritance behaviour and the possiblity
+of control by <em>_merge</em>.</p>
+<blockquote>
+<div><div class="tabcolumncolor">
+<div class="nonbreakheadtab">
+<div class="autocoltab"><table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 12%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>class member</p></th>
+<th class="head"><p>inherited</p></th>
+<th class="head"><p>merge-ctrl</p></th>
+<th class="head"><p>default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#param-fieldnames"><span class="std std-ref">_fields</span></a></p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#param-fielddefaults"><span class="std std-ref">_fielddefaults</span></a></p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#param-merge"><span class="std std-ref">_merge</span></a></p></td>
+<td><p>y</p></td>
+<td><p>n</p></td>
+<td><p><em>True</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#param-module"><span class="std std-ref">_module</span></a></p></td>
+<td><p>y</p></td>
+<td><p>n</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#param-rename"><span class="std std-ref">_rename</span></a></p></td>
+<td><p>y</p></td>
+<td><p>n</p></td>
+<td><p><em>False</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#param-tuplefactory"><span class="std std-ref">_tuplefactory</span></a></p></td>
+<td><p>n</p></td>
+<td><p>n</p></td>
+<td><p><em>namedtupledefs.namedtuple</em></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#param-typename"><span class="std std-ref">_typename</span></a></p></td>
+<td><p>n</p></td>
+<td><p>n</p></td>
+<td><p>classname</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#param-verbose"><span class="std std-ref">_verbose</span></a></p></td>
+<td><p>y</p></td>
+<td><p>n</p></td>
+<td><p><em>False</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div></blockquote>
+<p>The <em>_fields</em> and <em>_fielddefaults</em> members are merged by default,
+this could be prohibited by <em>_merge=False</em>.
+The default behaviour seems to be appropriate due to the nature of tuples and the
+most possible intention of inheritance for the extension of a previously defined
+base pattern.
+For example in order to extend the header of a protocol message with a message body.
+This makes sense, even though tuples are commonly not intended for inheritance.</p>
+<div class="section" id="parameters">
+<span id="namedtuplexapi-parameters"></span><h2>4.1. Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fields-and-fields">
+<span id="param-fieldnames"></span><span id="index-0"></span><h3>4.1.1. fields and _fields<a class="headerlink" href="#fields-and-fields" title="Permalink to this headline">¶</a></h3>
+<p>Symbolic names of fields with identical semantics as the standard library <em>collections.namedtuple</em>.
+When used in combination with the parameter <em>fielddefaults</em> the semantics changes to the behaviour
+of function parameters with default values, see <a class="reference internal" href="references.html#pyfunc" id="id4"><span>[PYFUNC]</span></a>.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;(&#39;</span> <span class="o">&lt;</span><span class="n">field</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="o">&lt;</span><span class="n">fields</span><span class="o">&gt;</span><span class="p">]</span> <span class="s1">&#39;)&#39;</span>
+<span class="n">field</span><span class="o">-</span><span class="n">name</span> <span class="p">:</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">valid</span><span class="o">-</span><span class="n">character</span><span class="o">-</span><span class="n">one</span><span class="o">&gt;</span><span class="p">[</span><span class="o">&lt;</span><span class="n">field</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">tail</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">field</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">tail</span> <span class="p">:</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">valid</span><span class="o">-</span><span class="n">character</span><span class="o">&gt;</span><span class="p">[</span><span class="o">&lt;</span><span class="n">field</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">tail</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">valid</span><span class="o">-</span><span class="n">character</span><span class="o">-</span><span class="n">one</span> <span class="p">:</span><span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z</span><span class="p">]</span>
+<span class="n">valid</span><span class="o">-</span><span class="n">character</span> <span class="p">:</span><span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z_0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>,
+<a class="reference internal" href="sw_design.html#design-fields"><span class="std std-ref">design _fields</span></a>,
+and <a class="reference internal" href="references.html#namedtuple" id="id5"><span>[namedtuple]</span></a>.</p>
+</div>
+<div class="section" id="fielddefaults-and-fielddefaults">
+<span id="param-fielddefaults"></span><span id="index-1"></span><h3>4.1.2. fielddefaults and _fielddefaults<a class="headerlink" href="#fielddefaults-and-fielddefaults" title="Permalink to this headline">¶</a></h3>
+<p>Optional support for default values of <em>fields</em>.
+A list of key-value pairs.
+Same semantics as the function call interfaces <a class="reference internal" href="references.html#pyfunc" id="id6"><span>[PYFUNC]</span></a>,</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fielddefaults</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;(&#39;</span> <span class="o">&lt;</span><span class="n">item</span><span class="o">-</span><span class="n">default</span><span class="o">&gt;</span> <span class="p">[,</span> <span class="o">&lt;</span><span class="n">fielddefaults</span><span class="o">&gt;</span><span class="p">]</span> <span class="s1">&#39;)&#39;</span>
+<span class="n">item</span><span class="o">-</span><span class="n">default</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;(&#39;</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="s1">&#39;)&#39;</span>
+<span class="n">key</span> <span class="p">:</span><span class="o">=</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">item</span><span class="o">-</span><span class="n">index</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">item</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">value</span> <span class="p">:</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">default</span><span class="o">-</span><span class="n">value</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>,
+and
+<a class="reference internal" href="sw_design.html#design-fielddefaults"><span class="std std-ref">design _fields</span></a>.</p>
+</div>
+<div class="section" id="merge-and-merge">
+<span id="param-merge"></span><span id="index-2"></span><h3>4.1.3. merge and _merge<a class="headerlink" href="#merge-and-merge" title="Permalink to this headline">¶</a></h3>
+<p>Sets the behaviour for the metaclass how to proceed with multiple base classes provided as
+mixin.
+The default behaviour is to merge the <a class="reference internal" href="#param-fieldnames"><span class="std std-ref">_fields</span></a> and the
+<a class="reference internal" href="#param-fielddefaults"><span class="std std-ref">_fielddefaults</span></a> attributes.
+The merge requires the following prerequisites:</p>
+<ol class="arabic">
+<li><p>The <em>fieldnames</em> must be valid.</p></li>
+<li><p>The merged <em>fielddefaults</em> has to comply to the Python function default options syntax <a class="reference internal" href="references.html#pyfunc" id="id8"><span>[PYFUNC]</span></a>.
+This in particular requires right-hand non-scattered values for the merged tuples.</p>
+<p>For example:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,)</span>
+    <span class="n">_fielddefaults</span> <span class="o">=</span> <span class="p">(</span><span class="mi">33</span><span class="p">,)</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,)</span>
+    <span class="n">_fielddefaults</span> <span class="o">=</span> <span class="p">(</span><span class="mi">66</span><span class="p">,)</span>
+
+<span class="k">class</span> <span class="nc">Merged</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">_merge</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This will not work, because the defaults for ‘d’ and ‘e’ are not determined:</p>
+<blockquote>
+<div><pre class="literal-block">class Merged(A, B):
+    _merge = True
+
+# The meged fields:
+#    _fields = ('a', 'b', 'c', 'd', 'e', 'f',)
+#    _fielddefaults = (33, ?, ?, 66,)      # <strong>causes an error</strong>
+                                           # c=33, d=?, e=?, f=66</pre>
+</div></blockquote>
+<p>While the following will work:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,)</span>
+    <span class="n">_fielddefaults</span> <span class="o">=</span> <span class="p">(</span><span class="mi">33</span><span class="p">,)</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,)</span>
+    <span class="n">_fielddefaults</span> <span class="o">=</span> <span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">,)</span>
+
+<span class="k">class</span> <span class="nc">Merged</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">_merge</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Resulting in:</p>
+<blockquote>
+<div><pre class="literal-block"># The meged fields:
+#    _fields = ('a', 'b', 'c', 'd', 'e', 'f',)
+#    _fielddefaults = (33, 44, 55, 66,)    # <strong>this works</strong>
+                                           # c=33, d=44, e=55, f=66</pre>
+</div></blockquote>
+</li>
+</ol>
+<p>A typical example for this is to use it for protocol data units, e.g. assemble the message header and body.
+Another example is to assemble a tuple for log entries with a line-prefix concatenated with the logged message.</p>
+<p>default := <em>True</em></p>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>,
+and <a class="reference internal" href="sw_design.html#interfaceparametersnamedtuplex"><span class="std std-ref">Class Interface Parameters NamedTupleX</span></a>.</p>
+</div>
+<div class="section" id="module-and-module">
+<span id="param-module"></span><span id="index-3"></span><h3>4.1.4. module and _module<a class="headerlink" href="#module-and-module" title="Permalink to this headline">¶</a></h3>
+<p>Sets ‘<em>__module__</em>’ of the created class definition.
+Available beginning with <em>Python-3.6</em>.</p>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>,
+<a class="reference internal" href="sw_design.html#design-module"><span class="std std-ref">design module</span></a>,
+and <a class="reference internal" href="references.html#namedtuple" id="id11"><span>[namedtuple]</span></a>.</p>
+</div>
+<div class="section" id="rename-and-rename">
+<span id="param-rename"></span><span id="index-4"></span><h3>4.1.5. rename and _rename<a class="headerlink" href="#rename-and-rename" title="Permalink to this headline">¶</a></h3>
+<p>If <em>True</em> replaces silently invalid field names by
+‘<em>_&lt;item-index&gt;</em>’.
+Available beginning with <em>Python-2.7</em>, in <em>Python3</em> beginning with  <em>Python-3.1</em> - so not in <em>Python-3.0</em>.</p>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>,
+<a class="reference internal" href="sw_design.html#design-rename"><span class="std std-ref">design rename</span></a>,
+and <a class="reference internal" href="references.html#namedtuple" id="id13"><span>[namedtuple]</span></a>.</p>
+</div>
+<div class="section" id="typename">
+<span id="param-typename"></span><span id="index-5"></span><h3>4.1.6. typename<a class="headerlink" href="#typename" title="Permalink to this headline">¶</a></h3>
+<p>Name of returned class of type <em>namedtuple</em>.
+The actual registered top-level base class is <em>NamedTupleXABC</em> - underneath <em>object</em> of course.</p>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>,
+and <a class="reference internal" href="references.html#namedtuple" id="id15"><span>[namedtuple]</span></a>.</p>
+</div>
+<div class="section" id="tuplefactory-and-tuplefactory">
+<span id="param-tuplefactory"></span><span id="index-6"></span><h3>4.1.7. tuplefactory and _tuplefactory<a class="headerlink" href="#tuplefactory-and-tuplefactory" title="Permalink to this headline">¶</a></h3>
+<p>The <em>tuplefactory</em> provides an alternative factory for the creation of a named tuple.
+The <em>API</em> has to support the identical interface, but is free to support more.
+The keyword parameters are passed through transparently after removing the
+template class specific options.
+Current available standard factories are:</p>
+<blockquote>
+<div><pre class="literal-block">tuplefactory := (
+   namedtupledefs.namedtuple   # patched version of <em>collections.namedtuple</em> with <em>fielddefaults</em>
+   collections.namedtuple      # standard library - no <em>fielddefaults</em>
+)</pre>
+</div></blockquote>
+<p>default := <em>namedtupledefs.namedtuple</em></p>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>,
+and <a class="reference internal" href="sw_design.html#design-tuplefactory"><span class="std std-ref">design tuplefactory</span></a>.</p>
+</div>
+<div class="section" id="verbose-and-verbose">
+<span id="param-verbose"></span><span id="index-7"></span><h3>4.1.8. verbose and _verbose<a class="headerlink" href="#verbose-and-verbose" title="Permalink to this headline">¶</a></h3>
+<p>Prints created class definition.</p>
+<p>See also <a class="reference external" href="genindex.html#P">usage of parameters</a>,
+<a class="reference internal" href="sw_design.html#design-verbose"><span class="std std-ref">design verbose</span></a>,
+and <a class="reference internal" href="references.html#namedtuple" id="id18"><span>[namedtuple]</span></a>.</p>
+<p>The call interface provides for groups of functions and classes with a set of
+common parameters and additional context specific modifications.</p>
+<p>The provided function sets comprise the categories:</p>
+<ul class="simple">
+<li><p>Filesystem Positions and Navigation</p></li>
+<li><p>Canonical Node Address</p></li>
+</ul>
+<p>Various common options are supported, which may not be available for each interface.</p>
+</div>
+</div>
+<div class="section" id="resources">
+<span id="namedtuplex-references"></span><h2>4.2. Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="references.html#ionelpymeta" id="id19"><span>[IONELPYMETA]</span></a> Understanding Python metaclasses</p></li>
+<li><p><a class="reference internal" href="references.html#namedtupleabc" id="id20"><span>[NAMEDTUPLEABC]</span></a> namedtuple.abc - abstract base class + mix-in for named tuples (Python recipe)</p></li>
+<li><p><a class="reference internal" href="references.html#pep3119" id="id21"><span>[PEP3119]</span></a>  – Abstract base classes according to PEP 3119</p></li>
+<li><p><a class="reference internal" href="references.html#pyfunc" id="id22"><span>[PYFUNC]</span></a> The Python Language Reference - Function definitions</p></li>
+<li><p><a class="reference internal" href="references.html#abc" id="id23"><span>[abc]</span></a> lib/abc</p></li>
+<li><p><a class="reference internal" href="references.html#customclass" id="id24"><span>[customclass]</span></a> reference/datamodel</p></li>
+<li><p><a class="reference internal" href="references.html#namedtuple" id="id25"><span>[namedtuple]</span></a> lib/collections</p></li>
+<li><p><a class="reference internal" href="references.html#type" id="id26"><span>[type]</span></a> lib/type</p></li>
+</ul>
+</div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="index_part_documents.html" class="btn btn-neutral float-right" title="5. Documents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_part_blueprint.html" class="btn btn-neutral float-left" title="3. Blueprint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (C) 2016 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+      <span class="lastupdated">
+        Last updated on Dec 06, 2019.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

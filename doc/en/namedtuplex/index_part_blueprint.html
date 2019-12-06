@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Blueprint &mdash; namedtuplex  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. The namedtuplex API" href="namedtuplex_api.html" />
+    <link rel="prev" title="2. Platform Support" href="index_part_platform_support.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Shortcuts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">NamedtupleX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_cockpit.html">apidoc</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index_part_abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_platform_support.html">2. Platform Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classes">3.1. Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-named-tuple-class">3.1.1. Simple Named Tuple Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symbolic-field-names">3.1.2. Symbolic Field Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inheritance">3.1.3. Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abstract-inheritance">3.1.4. Abstract Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mixin">3.1.5. Mixin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-values">3.1.6. Default Values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="namedtuplex_api.html">4. API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_documents.html">5. Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_modules.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_indices.html">7. Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_resources.html">8. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">9. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">10. External References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_license.html">11. Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Howto</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">namedtuplex</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Blueprint</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index_part_blueprint.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="blueprint">
+<span id="index-blueprint"></span><h1>3. Blueprint<a class="headerlink" href="#blueprint" title="Permalink to this headline">¶</a></h1>
+<p id="reference-architecture">The <em>namedtuplex</em> package provides extended named tuples with inheritance and
+function-style defaults for fields.
+The parameter passing is designed as member variables of the derived classes implemented
+by the meta class <a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a>.
+The application of the default values relies on the implementation of
+the actual factory - the optional parameter <a class="reference internal" href="namedtuplex_api.html#param-tuplefactory"><span class="std std-ref">tuplefactory</span></a>.
+The default factory is <em>namedtupledefs.namedtuple</em> with support for default values.</p>
+<div class="figure align-center" id="id9" style="width: 800px">
+<span id="figure-structure"></span><a class="reference external image-reference" href="_static/structure.png"><img alt="_images/structure.png" src="_images/structure.png" /></a>
+<p class="caption"><span class="caption-text">Figure: Class Diagram of NamedTupleX <a class="reference external" href="_static/structure.png"><img alt="zoom" src="_images/zoom.png" style="width: 16px;" /></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<p>For details on the implemented design refer to
+“<a class="reference internal" href="class_basics.html#concepts-class-implementation"><span class="std std-ref">The Implementation Basics of Classes</span></a>”
+and
+“<a class="reference internal" href="sw_design.html#swdesign"><span class="std std-ref">The SW-Design of namedtuplex</span></a>”.</p>
+<p>The provided function <em>namedtuplex</em> could be used as a drop-in replacement of the
+<em>namedtupledefs</em> <a class="reference internal" href="references.html#namedtupledefs" id="id1"><span>[namedtupledefs]</span></a> and standard <em>namedtuple</em> <a class="reference internal" href="references.html#namedtuple" id="id2"><span>[namedtuple]</span></a> class factory
+as well as the <em>namedtuple_with_abc</em> implementation
+by <em>Jan  Kaliszewski</em> <a class="reference internal" href="references.html#jankali" id="id3"><span>[JANKALI]</span></a> <a class="reference internal" href="references.html#namedtupleabc" id="id4"><span>[NAMEDTUPLEABC]</span></a> - when used with the standard parameters only.
+The receipt published by <em>Jan  Kaliszewski</em>  <a class="reference internal" href="references.html#namedtupleabc" id="id5"><span>[NAMEDTUPLEABC]</span></a> served as a base for
+the  <em>namedtuplex</em>.</p>
+<div class="section" id="classes">
+<h2>3.1. Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<p>Just a reminder - in Python anything is a class.</p>
+<div class="section" id="simple-named-tuple-class">
+<h3>3.1.1. Simple Named Tuple Class<a class="headerlink" href="#simple-named-tuple-class" title="Permalink to this headline">¶</a></h3>
+<p>Create a simple class:</p>
+<blockquote>
+<div><pre class="literal-block">from __future__ import print_function
+
+from namedtuplex.abc import NamedTupleXABC, ABC
+
+class MyClass(NamedTupleXABC):
+    _fields = ('a', 'b', )             # defines the fields of the <em>namedtuple</em>
+    pass
+assert issubclass(MyClass, ABC)
+
+mynamedtuple = MyClass(11, 22)
+assert mynamedtuple[0] == 11
+assert mynamedtuple[1] == 22
+
+print(&quot;OK&quot;)</pre>
+</div></blockquote>
+</div>
+<div class="section" id="symbolic-field-names">
+<h3>3.1.2. Symbolic Field Names<a class="headerlink" href="#symbolic-field-names" title="Permalink to this headline">¶</a></h3>
+<p>Alternative symbolic names for the fields of the tuple.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">NamedTupleXABC</span><span class="p">,</span> <span class="n">ABC</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="p">)</span>        <span class="c1"># defines the symbolic names</span>
+    <span class="k">pass</span>
+<span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="n">ABC</span><span class="p">)</span>
+
+<span class="n">mynamedtuple</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mynamedtuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">11</span>
+<span class="k">assert</span> <span class="n">mynamedtuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">22</span>
+
+<span class="k">assert</span> <span class="n">mynamedtuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">mynamedtuple</span><span class="o">.</span><span class="n">a</span>
+<span class="k">assert</span> <span class="n">mynamedtuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">mynamedtuple</span><span class="o">.</span><span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="inheritance">
+<h3>3.1.3. Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Inheritance of abstract and non-abstract classes.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">NamedTupleXABC</span><span class="p">,</span> <span class="n">ABC</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="k">pass</span>
+<span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="n">ABC</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MyClassDerived</span><span class="p">(</span><span class="n">MyClass</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="n">MyClass</span><span class="o">.</span><span class="n">_fields</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,)</span>           <span class="c1"># the inheritance of fields requires manual coding</span>
+    <span class="k">pass</span>
+<span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">MyClassDerived</span><span class="p">,</span> <span class="n">ABC</span><span class="p">)</span>
+
+<span class="n">mynamedtuple0</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">mynamedtuple01</span><span class="o">=</span> <span class="n">MyClassDerived</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>For the concept see <a class="reference internal" href="abc_doc.html#doc-namedtuplex-abc-doc"><span class="std std-ref">Class Concept of namedtuplex.abc</span></a>.</p>
+</div>
+<div class="section" id="abstract-inheritance">
+<h3>3.1.4. Abstract Inheritance<a class="headerlink" href="#abstract-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Creates an abstract tuple class in accordance to <a class="reference internal" href="references.html#pep3119" id="id6"><span>[PEP3119]</span></a>, see also <a class="reference internal" href="references.html#abc" id="id7"><span>[abc]</span></a>.</p>
+<p>Example with inherited attribute from a custom abstract class.</p>
+<blockquote>
+<div><pre class="literal-block">from __future__ import print_function
+
+from namedtuplex.abc import NamedTupleXABC, ABC
+
+
+class MyClassABC0(NamedTupleXABC):        # abstract class
+    typeid = 4711                         # standard inheritance for <em>typeid</em>
+
+class MyClassABC1(MyClassABC0):           # abstract class
+    formatid = 'xyz'                      # standard inheritance for <em>formid</em>
+
+class MyClass(MyClassABC1):               # non-abstract class
+    _fields = ('a', 'b')                  # triggered by <em>_fields</em>
+
+    def __str__(self):
+        return &quot;%d(%s): %s / %s&quot; % (self.typeid, self.formatid, self[0], self[1])
+
+mynamedtuple0 = MyClass(11, 22)
+print(mynamedtuple0)</pre>
+</div></blockquote>
+<p>For the concept see <a class="reference internal" href="abc_doc.html#doc-namedtuplex-abstract"><span class="std std-ref">Inheritance of Abstract Classes</span></a>.</p>
+</div>
+<div class="section" id="mixin">
+<h3>3.1.5. Mixin<a class="headerlink" href="#mixin" title="Permalink to this headline">¶</a></h3>
+<p>The use of the the generated tuple class as mixin.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">NamedTupleXABC</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassABC</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>                 <span class="c1"># abstract class</span>
+    <span class="n">typeid</span> <span class="o">=</span> <span class="mi">4711</span>
+
+<span class="k">class</span> <span class="nc">MyBaseClass</span><span class="p">(</span><span class="n">MyClassABC</span><span class="p">):</span>                    <span class="c1"># non-abstract class</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,)</span>
+
+<span class="k">class</span> <span class="nc">MyOtherBaseClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>                   <span class="c1"># non-abstract and non-tupel class</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+
+<span class="k">class</span> <span class="nc">MyClassL</span><span class="p">(</span><span class="n">MyBaseClass</span><span class="p">,</span> <span class="n">MyOtherBaseClass</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">MyClassR</span><span class="p">(</span><span class="n">MyOtherBaseClass</span><span class="p">,</span> <span class="n">MyBaseClass</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="n">mynamedtuple0</span> <span class="o">=</span> <span class="n">MyClassL</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,)</span>
+<span class="n">mynamedtuple0</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+
+<span class="n">mynamedtuple1</span> <span class="o">=</span> <span class="n">MyClassR</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,)</span>
+<span class="n">mynamedtuple1</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="default-values">
+<h3>3.1.6. Default Values<a class="headerlink" href="#default-values" title="Permalink to this headline">¶</a></h3>
+<p>Default values for for the fields, supports partial fields for the initialization
+of the generated class - similar to function arguments <a class="reference internal" href="references.html#pyfunc" id="id8"><span>[PYFUNC]</span></a>.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">NamedTupleXABC</span><span class="p">,</span> <span class="n">ABC</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="p">)</span>      <span class="c1"># defines the fields and the symbolic names</span>
+
+<span class="n">mynamedtuple0</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span>      <span class="n">fielddefaults</span><span class="o">=</span><span class="p">((</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">33</span><span class="p">),)</span>           <span class="p">)</span>  <span class="c1"># add dynamic defaults via metaclass</span>
+<span class="n">mynamedtuple1</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span>          <span class="n">fielddefaults</span><span class="o">=</span><span class="p">((</span>  <span class="mi">2</span><span class="p">,</span> <span class="mi">33</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">22</span><span class="p">),))</span>  <span class="c1"># add dynamic defaults via metaclass</span>
+<span class="n">mynamedtuple2</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span>  <span class="n">fielddefaults</span><span class="o">=</span><span class="p">((</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">33</span><span class="p">),</span> <span class="p">(</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">22</span><span class="p">),))</span>  <span class="c1"># add dynamic defaults via metaclass</span>
+
+<span class="k">assert</span> <span class="n">mynamedtuple0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">11</span>
+<span class="k">assert</span> <span class="n">mynamedtuple0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">22</span>
+<span class="k">assert</span> <span class="n">mynamedtuple0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">33</span>
+
+<span class="k">assert</span> <span class="n">mynamedtuple1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">11</span>
+<span class="k">assert</span> <span class="n">mynamedtuple1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">22</span>
+<span class="k">assert</span> <span class="n">mynamedtuple1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">33</span>
+
+<span class="k">assert</span> <span class="n">mynamedtuple2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">11</span>
+<span class="k">assert</span> <span class="n">mynamedtuple2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">55</span>
+<span class="k">assert</span> <span class="n">mynamedtuple2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">66</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Or the alternate static variant, which allows only one set of default values for each class:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">namedtuplex.abc</span> <span class="k">import</span> <span class="n">NamedTupleXABC</span><span class="p">,</span> <span class="n">ABC</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="p">)</span>        <span class="c1"># defines the symbolic names</span>
+    <span class="n">_item_defauls</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">33</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">22</span><span class="p">),))</span>
+
+<span class="n">mynamedtuple2</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">55</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">mynamedtuple0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">11</span>
+<span class="k">assert</span> <span class="n">mynamedtuple0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">55</span>
+<span class="k">assert</span> <span class="n">mynamedtuple0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">33</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="namedtuplex_api.html" class="btn btn-neutral float-right" title="4. The namedtuplex API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_part_platform_support.html" class="btn btn-neutral float-left" title="2. Platform Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (C) 2016 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+      <span class="lastupdated">
+        Last updated on Dec 06, 2019.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

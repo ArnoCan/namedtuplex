@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.2. namedtuplex.abc &mdash; namedtuplex  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Indices and tables" href="index_part_indices.html" />
+    <link rel="prev" title="5.1. namedtuplex.__init__" href="namedtuplex.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Shortcuts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">NamedtupleX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_cockpit.html">apidoc</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index_part_abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_platform_support.html">2. Platform Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_blueprint.html">3. Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namedtuplex_api.html">1. API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_documents.html">4. Documents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_modules.html">5. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="namedtuplex.html">5.1. namedtuplex.__init__</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.2. namedtuplex.abc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inheritance">5.2.1. Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mixin">5.2.2. Mixin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-namedtuplex.abc">5.2.3. Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">5.2.4. Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#with-metaclass">5.2.4.1. with_metaclass</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#abc">5.2.5. ABC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#namedtuplexabc">5.2.6. NamedTupleXABC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merge">5.2.6.1. merge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inherited-tuple-members">5.2.6.2. inherited tuple members</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#namedtuplexabcmeta">5.2.7. NamedTupleXABCMeta</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#new">5.2.7.1. __new__</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#exceptions">5.2.8. Exceptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_indices.html">6. Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_resources.html">7. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">8. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">9. External References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_license.html">10. Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Howto</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">namedtuplex</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index_modules.html">5. Modules</a> &raquo;</li>
+        
+      <li>5.2. namedtuplex.abc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/namedtuplex.abc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="namedtuplex-abc">
+<span id="namedtuplex-appparts"></span><h1>5.2. namedtuplex.abc<a class="headerlink" href="#namedtuplex-abc" title="Permalink to this headline">¶</a></h1>
+<p>The <em>namedtuplex.abc</em> module provides the enhanced replacement of <em>containers.namedtuple</em>.
+The <em>namedtuplex.abc.namedtuple</em> is drop-in compatible with the <em>containers.namedtuple</em>
+interface.
+The contained public classes interfaces are:</p>
+<blockquote>
+<div><style>
+   div.tmptab table td:nth-child(1) {
+      width: 30ch;
+   }
+</style>
+
+<div class="tmptab">
+<div class="overviewtab">
+<div class="nonbreakheadtab">
+<div class="autocoltab"><table class="docutils align-default">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 58%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#return-abc"><span class="std std-ref">ABC</span></a></p></td>
+<td><p>Alias for <a class="reference internal" href="#return-namedtuplexabc"><span class="std std-ref">NamedTupleXABC</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#return-namedtuplexabc"><span class="std std-ref">NamedTupleXABC</span></a></p></td>
+<td><p>Abtstract base class with support of inheritance and mixin.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div></blockquote>
+<p>The contained secondary public utility classes.
+These serve as internal template and metaclass, which could be alternated by call interface parameters.</p>
+<blockquote>
+<div><style>
+   div.tmptab table td:nth-child(1) {
+      width: 30ch;
+   }
+</style>
+
+<div class="tmptab">
+<div class="overviewtab">
+<div class="nonbreakheadtab">
+<div class="autocoltab"><table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#return-namedtuplexabcmeta"><span class="std std-ref">ABCMETA</span></a></p></td>
+<td><p>Alias for <a class="reference internal" href="#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a></p></td>
+<td><p>Meta class for the parameterized creation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div></blockquote>
+<p>The common return value for the interfaces is a <em>namedtuple</em> class of the type
+defined by the  input parameter <em>typename</em>.
+For a detailed overview refer to “<a class="reference internal" href="namedtuplex_api.html#namedtuplexapi-parameters"><span class="std std-ref">The namedtuplex API - Parameters</span></a>”.</p>
+<div class="section" id="inheritance">
+<span id="doc-return-namedtuplexabc"></span><span id="doc-common-return-types"></span><h2>5.2.1. Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h2>
+<p>The class <em>NamedTupleXABC</em> supports the inheritance by derived classes.
+The class itself is an abstract class based on the metaclass <em>NamedTupleXABCMeta</em>.</p>
+<div class="centerfigure" style="width:450px;">
+<div class="classdiagramhref"><div class="graphviz"><img src="_images/inheritance-eaa682b37a381d2b32124d18543b1df98454b5fa.png" alt="Inheritance diagram of namedtuplex.abc.NamedTupleXABCMeta, namedtuplex.abc.NamedTupleXABC" usemap="#inheritance8ff2d1b3c1" class="inheritance graphviz" /></div>
+<map id="inheritance8ff2d1b3c1" name="inheritance8ff2d1b3c1">
+<area shape="rect" id="node3" href="#namedtuplex.abc.NamedTupleXABCMeta" target="_top" title="The metaclass for named tuples as an abstract base with support " alt="" coords="192,55,363,80"/>
+<area shape="rect" id="node2" href="#namedtuplex.abc.NamedTupleXABC" target="_top" title="The abstract class for extended *tuple* classes." alt="" coords="5,5,144,31"/>
+</map></div>
+</div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The class supports the inheritance from abstract classes as well as from non-abstract classes.</p>
+</div>
+<div class="section" id="mixin">
+<h2>5.2.2. Mixin<a class="headerlink" href="#mixin" title="Permalink to this headline">¶</a></h2>
+<p>The class <em>NamedTupleXABC</em> supports the mixin by derived classes.</p>
+</div>
+<div class="section" id="module-namedtuplex.abc">
+<span id="module"></span><h2>5.2.3. Module<a class="headerlink" href="#module-namedtuplex.abc" title="Permalink to this headline">¶</a></h2>
+<p>The package ‘namedtuplex’ provides an extended call interface and classes for <em>namedtuples</em>.</p>
+</div>
+<div class="section" id="functions">
+<h2>5.2.4. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="with-metaclass">
+<h3>5.2.4.1. with_metaclass<a class="headerlink" href="#with-metaclass" title="Permalink to this headline">¶</a></h3>
+<p>The function <em>with_metaclass</em> is copied from <em>future.utils</em> <a class="reference internal" href="references.html#future-utils" id="id1"><span>[future.utils]</span></a>.</p>
+<dl class="function">
+<dt id="namedtuplex.abc.with_metaclass">
+<code class="sig-prename descclassname">namedtuplex.abc.</code><code class="sig-name descname">with_metaclass</code><span class="sig-paren">(</span><em class="sig-param">meta</em>, <em class="sig-param">*bases</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/namedtuplex/abc.html#with_metaclass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.abc.with_metaclass" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Function from future/utils.py License: BSD.</dt><dd><p>Function from jinja2/_compat.py. License: BSD.</p>
+</dd>
+</dl>
+<p>Do need a wrapper only for the compilation-breaking
+metaclass syntax of Python2/Python3. Require
+this on all platforms - including <em>Jython</em>.</p>
+<p>Original doc-string:</p>
+<blockquote>
+<div><p>Function from jinja2/_compat.py. License: BSD.</p>
+<p>Use it like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BaseForm</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">FormType</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Form</span><span class="p">(</span><span class="n">with_metaclass</span><span class="p">(</span><span class="n">FormType</span><span class="p">,</span> <span class="n">BaseForm</span><span class="p">)):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>This requires a bit of explanation: the basic idea is to make a
+dummy metaclass for one level of class instantiation that replaces
+itself with the actual metaclass.  Because of internal type checks
+we also need to make sure that we downgrade the custom metaclass
+for one level to something closer to type (that’s why __call__ and
+__init__ comes back from type etc.).</p>
+<p>This has the advantage over six.with_metaclass of not introducing
+dummy classes into the final MRO.</p>
+</div></blockquote>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="abc">
+<span id="return-abc"></span><h2>5.2.5. ABC<a class="headerlink" href="#abc" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="namedtuplex.abc.ABC">
+<code class="sig-prename descclassname">namedtuplex.abc.</code><code class="sig-name descname">ABC</code><a class="headerlink" href="#namedtuplex.abc.ABC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference to the abstract base class.</p>
+<p>alias of <a class="reference internal" href="#namedtuplex.abc.NamedTupleXABC" title="namedtuplex.abc.NamedTupleXABC"><code class="xref py py-class docutils literal notranslate"><span class="pre">namedtuplex.abc.NamedTupleXABC</span></code></a></p>
+</dd></dl>
+
+<p>Same as <em>namedtuple.abc.NamedTupleXABC</em>.</p>
+</div>
+<div class="section" id="namedtuplexabc">
+<span id="return-namedtuplexabc"></span><h2>5.2.6. NamedTupleXABC<a class="headerlink" href="#namedtuplexabc" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="graphviz"><img src="_images/inheritance-abc70fda6f8e5b8b34f5fdebb78be024f18a2cbf.png" alt="Inheritance diagram of namedtuplex.abc.ABC" usemap="#inheritance03ac214a16" class="inheritance graphviz" /></div>
+<map id="inheritance03ac214a16" name="inheritance03ac214a16">
+<area shape="rect" id="node1" href="#namedtuplex.abc.NamedTupleXABC" target="_top" title="The abstract class for extended *tuple* classes." alt="" coords="5,5,144,31"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
+<dt id="namedtuplex.abc.NamedTupleXABC">
+<em class="property">class </em><code class="sig-prename descclassname">namedtuplex.abc.</code><code class="sig-name descname">NamedTupleXABC</code><a class="reference internal" href="_modules/namedtuplex/abc.html#NamedTupleXABC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.abc.NamedTupleXABC" title="Permalink to this definition">¶</a></dt>
+<dd><p>The abstract class for extended <em>tuple</em> classes.
+The metaclass syntax is based on <em>future.utils</em> <a class="reference internal" href="references.html#future-utils" id="id2"><span>[future.utils]</span></a> with support for
+both <em>Python</em> syntax variants of <em>Python2.7</em> and <em>Python3</em>.
+For the metaclass refer to <a class="reference internal" href="#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a>.</p>
+<dl class="attribute">
+<dt id="namedtuplex.abc.NamedTupleXABC._fields">
+<code class="sig-name descname">_fields</code><a class="headerlink" href="#namedtuplex.abc.NamedTupleXABC._fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>The abstract property, see abc.abstractproperty <a class="reference internal" href="references.html#abc" id="id3"><span>[abc]</span></a>, and <a class="reference internal" href="namedtuplex_api.html#param-fieldnames"><span class="std std-ref">fields and _fields</span></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="namedtuplex.abc.NamedTupleXABC._fielddefaults">
+<code class="sig-name descname">_fielddefaults</code><em class="property"> = None</em><a class="headerlink" href="#namedtuplex.abc.NamedTupleXABC._fielddefaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional default values for _fields in function-paramater style see <a class="reference internal" href="namedtuplex_api.html#param-fielddefaults"><span class="std std-ref">fielddefaults and _fielddefaults</span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="merge">
+<h3>5.2.6.1. merge<a class="headerlink" href="#merge" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="namedtuplex.abc.NamedTupleXABC.merge">
+<code class="sig-prename descclassname">NamedTupleXABC.</code><code class="sig-name descname">merge</code><span class="sig-paren">(</span><em class="sig-param">*others</em>, <em class="sig-param">**kargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/namedtuplex/abc.html#NamedTupleXABC.merge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.abc.NamedTupleXABC.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new instance by concatenating the <em>others</em> to the copy
+of current instance created with standard members. Additional
+attributes, properties, and methods have to be processed by
+derived classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>others</strong> – <p>Instances of tuples to be merged into this instance. The merge
+is processed by right-hand concatenation of <em>others</em>.</p>
+<dl>
+<dt>The supported types are:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NamedTupleXABC</span>
+<span class="n">OrderedDict</span>      <span class="c1"># same as from &#39;_asdict()&#39;</span>
+<span class="o">&lt;</span><span class="n">namedtuple</span><span class="o">&gt;</span>     <span class="c1"># the result of &#39;namedtuple()&#39;</span>
+<span class="nb">tuple</span>            <span class="c1"># when &#39;rename&#39; is &#39;True&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>kargs</strong> – <dl>
+<dt>deep:</dt><dd><p>If <em>True</em> merges a deep copy of all, else a swallow copy only.</p>
+<p>default := <em>False</em></p>
+</dd>
+<dt>module:</dt><dd><p>Optional parameter to be passed to the <em>tuplefactory</em>.</p>
+<p>default := <em>None</em></p>
+</dd>
+<dt>rename:</dt><dd><p>Optional parameter to be passed to the <em>tuplefactory</em>.</p>
+<p>default := <em>None</em></p>
+</dd>
+<dt>tuplefactory:</dt><dd><p>The <em>tuplefactory</em> callable to be used for the new named tuple.</p>
+<p>default := <em>namedtupledefs.namedtuple</em></p>
+</dd>
+<dt>verbose:</dt><dd><p>Optional parameter to be passed to the <em>tuplefactory</em>.</p>
+<p>default := <em>None</em></p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new instance of merged objects.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – </p></li>
+<li><p><strong>pass-through</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="inherited-tuple-members">
+<h3>5.2.6.2. inherited tuple members<a class="headerlink" href="#inherited-tuple-members" title="Permalink to this headline">¶</a></h3>
+<p>Inherited members from the parent <em>namedtuple</em>, by default <em>namedtupledefs.namedtuple</em>.</p>
+<ul class="simple">
+<li><p><em>_make</em></p></li>
+<li><p><em>_asdict</em></p></li>
+<li><p><em>_replace</em></p></li>
+<li><p><em>__repr__</em></p></li>
+<li><p><em>__getnewargs__</em></p></li>
+<li><p><em>__getstate__</em></p></li>
+<li><p><em>merge</em></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="namedtuplexabcmeta">
+<span id="return-namedtuplexabcmeta"></span><h2>5.2.7. NamedTupleXABCMeta<a class="headerlink" href="#namedtuplexabcmeta" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="graphviz"><img src="_images/inheritance-b2a2620db0c085995dba197b26b5e99439c8f28e.png" alt="Inheritance diagram of namedtuplex.abc.NamedTupleXABCMeta" usemap="#inheritance589aeaa941" class="inheritance graphviz" /></div>
+<map id="inheritance589aeaa941" name="inheritance589aeaa941">
+<area shape="rect" id="node2" href="#namedtuplex.abc.NamedTupleXABCMeta" target="_top" title="The metaclass for named tuples as an abstract base with support " alt="" coords="135,5,305,31"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
+<dt id="namedtuplex.abc.NamedTupleXABCMeta">
+<em class="property">class </em><code class="sig-prename descclassname">namedtuplex.abc.</code><code class="sig-name descname">NamedTupleXABCMeta</code><a class="reference internal" href="_modules/namedtuplex/abc.html#NamedTupleXABCMeta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.abc.NamedTupleXABCMeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>The metaclass for named tuples as an abstract base with support
+for inheritance and mixin.
+For the abstract class refer to <a class="reference internal" href="#return-namedtuplexabc"><span class="std std-ref">NamedTupleXABC</span></a>.</p>
+</dd></dl>
+
+<div class="section" id="new">
+<span id="namedtuplexabcmeta-new"></span><span id="index-0"></span><h3>5.2.7.1. __new__<a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="namedtuplex.abc.NamedTupleXABCMeta.__new__">
+<em class="property">static </em><code class="sig-prename descclassname">NamedTupleXABCMeta.</code><code class="sig-name descname">__new__</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">name</em>, <em class="sig-param">bases</em>, <em class="sig-param">namespace</em>, <em class="sig-param">**kargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/namedtuplex/abc.html#NamedTupleXABCMeta.__new__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.abc.NamedTupleXABCMeta.__new__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the symbolic field names for the indices and selected attributes
+as member variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> – The created class.</p></li>
+<li><p><strong>name</strong> – The name of the created class.</p></li>
+<li><p><strong>bases</strong> – List of base classes.</p></li>
+<li><p><strong>namespace</strong> – The namespace, containing the <em>_fields</em> class variable.</p></li>
+<li><p><strong>kargs</strong> – <dl>
+<dt>fields:</dt><dd><p>The <em>fields</em> parameter provides a list of alternate names
+for the contained <em>tuple</em> members. This in advance defines
+the required  mandatory number of items for the <em>tuple</em>.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="p">:</span><span class="o">=</span> <span class="p">(</span>
+      <span class="s1">&#39;&quot;&#39;</span> <span class="o">&lt;</span><span class="n">index</span><span class="o">-</span><span class="n">names</span><span class="o">&gt;</span> <span class="s1">&#39;&quot;&#39;</span>
+    <span class="o">|</span> <span class="s1">&#39;[&#39;</span> <span class="o">&lt;</span><span class="n">index</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>  <span class="s1">&#39;]&#39;</span>
+    <span class="o">|</span> <span class="s1">&#39;(&#39;</span> <span class="o">&lt;</span><span class="n">index</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span>  <span class="s1">&#39;)&#39;</span>
+<span class="p">)</span>
+
+<span class="n">index</span><span class="o">-</span><span class="n">names</span> <span class="p">:</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">index</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">[[</span> <span class="p">,]</span> <span class="o">&lt;</span><span class="n">index</span><span class="o">-</span><span class="n">names</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">index</span><span class="o">-</span><span class="nb">list</span> <span class="p">:</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">index</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">[,</span> <span class="o">&lt;</span><span class="n">index</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">index</span><span class="o">-</span><span class="n">name</span> <span class="p">:</span><span class="o">=</span> <span class="s2">&quot;valid name for the field index of the tuple&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd>
+<dt>fielddefaults:</dt><dd><p>Defines default values for the <em>fields</em> of the tuple. This
+allows for the variable length initialization of the created
+<em>namedtuple</em> class.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fielddefaults</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;(&#39;</span> <span class="o">&lt;</span><span class="n">default</span><span class="o">-</span><span class="nb">list</span><span class="o">&gt;</span> <span class="s1">&#39;)&#39;</span>
+
+<span class="n">default</span><span class="o">-</span><span class="nb">list</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;(&#39;</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span> <span class="s1">&#39;,&#39;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="s1">&#39;)&#39;</span>
+<span class="n">key</span> <span class="p">:</span><span class="o">=</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="n">field</span><span class="o">-</span><span class="n">index</span><span class="o">&gt;</span>
+    <span class="o">|</span> <span class="o">&lt;</span><span class="n">field</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+<span class="p">)</span>
+<span class="n">field</span><span class="o">-</span><span class="n">index</span> <span class="p">:</span><span class="o">=</span> <span class="s2">&quot;valid integer index of a present field&quot;</span>
+<span class="n">field</span><span class="o">-</span><span class="n">name</span> <span class="p">:</span><span class="o">=</span> <span class="s2">&quot;valid name from the list _fields&quot;</span>
+<span class="n">value</span> <span class="p">:</span><span class="o">=</span>  <span class="s2">&quot;default value&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Default values are supported in accordance to the standard Python
+behaviour of call parameters <a class="reference internal" href="references.html#pyfunc" id="id4"><span>[PYFUNC]</span></a>.</p>
+</dd>
+<dt>module</dt><dd><p>Sets <em>__module__</em> of the created class definition.</p>
+<p>Available beginning with <em>Python-3.6</em>.
+See <a class="reference internal" href="references.html#namedtuple" id="id5"><span>[namedtuple]</span></a>.</p>
+</dd>
+<dt>tuplefactory:</dt><dd><p>The class factory to be used for the named tuple.</p>
+<p>default := <em>collections.namedtuple</em></p>
+</dd>
+<dt>rename:</dt><dd><p>If <em>True</em> replaces silently invalid field names by
+‘_&lt;item-index&gt;’.</p>
+<p>default := <em>False</em></p>
+<p>Available <em>Python-2.7</em> and in <em>Python-3.x</em> see manuals “…beginning with Python3.1”.
+See <a class="reference internal" href="references.html#namedtuple" id="id6"><span>[namedtuple]</span></a>.</p>
+</dd>
+<dt>useslots:</dt><dd><p>Creates a member <em>__slots__</em>.</p>
+<p>default := <em>True</em></p>
+<p>See <a class="reference internal" href="references.html#namedtuple" id="id7"><span>[namedtuple]</span></a>.</p>
+</dd>
+<dt>verbose:</dt><dd><p>Prints created class definition.</p>
+<p>default := <em>False</em></p>
+<p>See <a class="reference internal" href="references.html#namedtuple" id="id8"><span>[namedtuple]</span></a>.</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An abstract class derived from <em>namedtuple</em> with alternative
+symbolic names for the contained items. In addition predefined
+attributes are included.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="namedtuplex.html#namedtuplex.__init__.NamedTupleXParameterError" title="namedtuplex.__init__.NamedTupleXParameterError"><strong>NamedTupleXParameterError</strong></a> – </p></li>
+<li><p><strong>pass-through</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p>Examples:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Python3</span><span class="p">:</span>
+
+   <span class="k">class</span> <span class="nc">_NamedTupleABC</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">NamedTupleXABCMeta</span><span class="p">):</span>
+       <span class="n">_fields</span> <span class="o">=</span> <span class="n">abstractproperty</span><span class="p">()</span>
+
+       <span class="n">attribute01</span> <span class="o">=</span> <span class="n">default01</span>
+       <span class="n">attribute02</span> <span class="o">=</span> <span class="n">default02</span>
+
+       <span class="c1"># common part for Python3 and Python2</span>
+
+       <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+           <span class="k">try</span><span class="p">:</span>
+               <span class="n">attribute01</span> <span class="o">=</span> <span class="n">kargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;attribute01&#39;</span><span class="p">)</span>
+           <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+               <span class="n">attribute01</span> <span class="o">=</span> <span class="n">default01</span>
+
+           <span class="k">try</span><span class="p">:</span>
+               <span class="n">attribute02</span> <span class="o">=</span> <span class="n">kargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;attribute02&#39;</span><span class="p">)</span>
+           <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+               <span class="n">attribute02</span> <span class="o">=</span> <span class="n">default02</span>
+
+           <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_NamedTupleABC</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+<span class="n">Python2</span><span class="p">:</span>
+
+   <span class="k">class</span> <span class="nc">_NamedTupleABC</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+       <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">NamedTupleXABCMeta</span>
+       <span class="n">_fields</span> <span class="o">=</span> <span class="n">abstractproperty</span><span class="p">()</span>
+
+       <span class="n">attribute01</span> <span class="o">=</span> <span class="n">default01</span>
+       <span class="n">attribute02</span> <span class="o">=</span> <span class="n">default02</span>
+
+       <span class="c1"># common part - see Python3</span>
+       <span class="o">...</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="exceptions">
+<h2>5.2.8. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="index_part_indices.html" class="btn btn-neutral float-right" title="6. Indices and tables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="namedtuplex.html" class="btn btn-neutral float-left" title="5.1. namedtuplex.__init__" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (C) 2016 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+      <span class="lastupdated">
+        Last updated on Dec 06, 2019.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

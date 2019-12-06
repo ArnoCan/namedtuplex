@@ -1,0 +1,801 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1. The Implementation Basics of Classes &mdash; namedtuplex  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5.2. Class Concept of namedtuplex.abc" href="abc_doc.html" />
+    <link rel="prev" title="5. Documents" href="index_part_documents.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Shortcuts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">NamedtupleX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_cockpit.html">apidoc</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index_part_abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_platform_support.html">2. Platform Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_blueprint.html">3. Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namedtuplex_api.html">4. API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_part_documents.html">5. Documents</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. Implementation Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#repititorium-class-creation">5.1.1. Repititorium Class Creation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#components-of-classes">5.1.1.1. Components of Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classes-and-objects">5.1.1.2. Classes and Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#types-of-classes-and-objects">5.1.1.3. Types of Classes and Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#call-flow-of-class-creation">5.1.2. Call Flow of Class Creation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#single-inheritance">5.1.2.1. Single Inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-inheritance-mixin">5.1.2.2. Multiple Inheritance - Mixin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-structure-of-namedtuplex">5.1.2.3. The Structure of <em>namedtuplex</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="abc_doc.html">5.2. Class Concept</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_features.html">5.3. Class Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sw_design.html">5.4. SW Design</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_modules.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_indices.html">7. Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_resources.html">8. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">9. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">10. External References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_license.html">11. Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Howto</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">namedtuplex</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index_part_documents.html">5. Documents</a> &raquo;</li>
+        
+      <li>5.1. The Implementation Basics of Classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/class_basics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-implementation-basics-of-classes">
+<span id="concepts-class-implementation"></span><h1>5.1. The Implementation Basics of Classes<a class="headerlink" href="#the-implementation-basics-of-classes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="repititorium-class-creation">
+<h2>5.1.1. Repititorium Class Creation<a class="headerlink" href="#repititorium-class-creation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="components-of-classes">
+<h3>5.1.1.1. Components of Classes<a class="headerlink" href="#components-of-classes" title="Permalink to this headline">¶</a></h3>
+<p>The classes are implemented as basic data structures containing data and references to functions
+to proceed the data.
+This basic concept is honed by various additional concepts for the actual implementation.
+In case of <em>Python</em> the most implementation details are part of the language definition.
+These are for example the magic functions and data members enclosed in double_underscores
+<em>__&lt;member-data-or-function&gt;__</em>.
+The most prominent disclosed implementation details for the class definition and creation are
+here the functions - or more approriate the methods -  <em>__new__</em> and <em>__init</em>, and the
+data <em>__class__</em> and <em>__bases__</em>.
+The class fabric is which has created the class is either referenced by a special member
+<em>__metaclass__</em>, or could be evaluated dynamic by the call of the <em>type</em> function.</p>
+<p>The data members reflect the blueprint of the inheritance structure of the class design.
+While in static compiled languages the blueprint has to be defined before compileation
+and is by default not foreseen to be altered, <em>Python</em> provides by concept the dynamic
+creation of classes at runtime.
+In <em>Python</em> the classes are actually runtime instances, which serve as a dynamic instance
+fabric.
+The actual creation is performed by the so called <em>metaclass</em>, either the default <em>type</em>,
+or a custom class.
+Thus <em>Python</em> discloses the complete mechanism of class and data creation with standard
+callbacks for user defined procedures.</p>
+</div>
+<div class="section" id="classes-and-objects">
+<h3>5.1.1.2. Classes and Objects<a class="headerlink" href="#classes-and-objects" title="Permalink to this headline">¶</a></h3>
+<p>The overall blueprint of the class definition, and the class and instance creation
+could be described in a model of three dimensions.</p>
+<ol class="arabic simple">
+<li><p>Class-Hierarcy</p></li>
+<li><p>Type-Hierarchy</p></li>
+<li><p>Instance-Containment</p></li>
+</ol>
+<p>The Class-Hierarcy is defined by the abstraction model of the application.
+It describes the data and process flow.</p>
+<p>The type hierarcy provides the means to implement the Class-Hierarchy into real-world
+programs.
+In most programming languages these are hidden by the compiler and though not part of
+the programming paradigm, <em>Python</em> discloses this as a standard part of the programming language.</p>
+<div class="figure align-center" id="id6" style="width: 700px">
+<span id="figure-classconstructionlayers"></span><a class="reference external image-reference" href="_static/class-and-objects.png"><img alt="_images/class-and-objects.png" src="_images/class-and-objects.png" /></a>
+<p class="caption"><span class="caption-text">Figure: Class and Instance Elements <a class="reference external" href="_static/class-and-objects.png"><img alt="zoom" src="_images/zoom.png" style="width: 16px;" /></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>The Instance-Containment represents the runtime data structure to be used to
+process the actual data and provides the workflow to the user.
+The cental role in this contex is defined by the methods described in the following sections.</p>
+<ul class="simple">
+<li><p><em>__init__</em> -  for the standard development</p></li>
+<li><p><em>__new__</em> -  for the advanced development</p></li>
+</ul>
+</div>
+<div class="section" id="types-of-classes-and-objects">
+<h3>5.1.1.3. Types of Classes and Objects<a class="headerlink" href="#types-of-classes-and-objects" title="Permalink to this headline">¶</a></h3>
+<p>The basic paradigma of <em>Python</em> is focused on the dynamic definition and creation of its entities.
+This comprises the blueprint and the implementation, while the most other programming languages focus
+on for the dynamic runtime environment on the implementation only.
+The <em>Python</em> runtime environment provides for the dynamic class creation as well
+as the dynamic instance creation.
+Thus the classes theirselves are runtime instances.</p>
+<p>The basic categories of runtime entities are type instances and object instances.
+Where the types are the fabrics for instances of type <em>object</em>.
+The instances of type <em>object</em> provide the basic hooks of the instance items into the
+the runtime framework of the <em>Python</em> implementation.</p>
+<p>The actual implementation of <em>Python</em> has varied by different object types due to different
+implementation concepts and frameworks.
+This was finalized in the so called <em>new object</em> type, which also supports a specific runtime
+method resolution order  - <em>MRO</em>.
+This is in particular established as the so called <em>C3 linearization</em> <a class="reference internal" href="references.html#c3lin" id="id1"><span>[C3LIN]</span></a>.</p>
+<p>Resulting in the standard items:</p>
+<ul class="simple">
+<li><p><em>type</em> - as the common fabric for classes and and their instances</p></li>
+<li><p><em>object</em> - as the top level class, providing the integration of
+application instances into the runtime framework</p></li>
+</ul>
+<p>Refer to the <em>Python</em> documentation for further details <a class="reference internal" href="references.html#pylang" id="id2"><span>[PYLANG]</span></a>.</p>
+</div>
+</div>
+<div class="section" id="call-flow-of-class-creation">
+<h2>5.1.2. Call Flow of Class Creation<a class="headerlink" href="#call-flow-of-class-creation" title="Permalink to this headline">¶</a></h2>
+<p>The essential criteria for the parameter design of the dynamic named tuple extension
+is the call flow of instance and though the custom class construction.</p>
+<p>The basic class construction in Python comprises 3 layers of classes and objects.
+The metaclass is only involved in the class construction, while the instanciation of the
+classes are worked out by their defined inheritance hierarchy.
+The inheritance hierarchy serves also for the runtime resolution of method calls e.g.
+by the “<em>C3 linearization</em>” <a class="reference internal" href="references.html#c3lin" id="id3"><span>[C3LIN]</span></a> - which is applied for the new <em>object</em> types.</p>
+<p>This section provides yet another short overview as a reminder with some conrete example flows
+as required for the design of the classes
+<a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabc"><span class="std std-ref">NamedTupleXABC</span></a> and <a class="reference internal" href="namedtuplex.abc.html#return-namedtuplexabcmeta"><span class="std std-ref">NamedTupleXABCMeta</span></a>.
+For a detailed overview refer to <a class="reference internal" href="references.html#customclass" id="id4"><span>[customclass]</span></a>.
+For a detailed article see “Understanding Python metaclasses” <a class="reference internal" href="references.html#ionelpymeta" id="id5"><span>[IONELPYMETA]</span></a>.</p>
+<div class="section" id="single-inheritance">
+<h3>5.1.2.1. Single Inheritance<a class="headerlink" href="#single-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>The basic process flow is pretty straight forward in case of single inheritance.</p>
+<div class="figure align-center" id="id7" style="width: 500px">
+<span id="figure-classconstructionlayerssingle"></span><a class="reference external image-reference" href="_static/class-construction-layers.png"><img alt="_images/class-construction-layers.png" src="_images/class-construction-layers.png" /></a>
+<p class="caption"><span class="caption-text">Figure: Class Construction Layers <a class="reference external" href="_static/class-construction-layers.png"><img alt="zoom" src="_images/zoom.png" style="width: 16px;" /></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Source</strong></p>
+<blockquote>
+<div><p>The following example code demonstrates the draft class structure with all <em>__new__</em> and <em>__init__</em>
+methods present.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">NamedTupleXABCMeta</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABCMeta  :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABCMeta</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABCMeta  :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABCMeta</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">NamedTupleXABC</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">NamedTupleXABCMeta</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABC      :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABC      :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">AppTupleClass</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AppTupleClass       :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AppTupleClass</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AppTupleClass       :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AppTupleClass</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">AppTupleClass</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">()</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Result</strong></p>
+<blockquote>
+<div><p>Results in the output:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0------------------------------
+
+NamedTupleXABCMeta  :new    :&lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;  (&#39;NamedTupleXABC&#39;, ...  # class creation parameters
+NamedTupleXABCMeta  :init   :&lt;class &#39;__main__.NamedTupleXABC&#39;&gt;  (&#39;NamedTupleXABC&#39;,  ...
+NamedTupleXABCMeta  :new    :&lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;  (&#39;AppTupleClass&#39;, ...
+NamedTupleXABCMeta  :init   :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  (&#39;AppTupleClass&#39;, ...
+
+1------------------------------
+
+AppTupleClass       :new    :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  ()  {}                       # instance creation parameters
+NamedTupleXABC      :new    :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  ()  {}
+AppTupleClass       :init   :&lt;__main__.AppTupleClass object at 0x7f99d6daf6d0&gt;  ()  {}
+NamedTupleXABC      :init   :&lt;__main__.AppTupleClass object at 0x7f99d6daf6d0&gt;  ()  {}
+
+OK
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Discussion</strong></p>
+<blockquote>
+<div><p>With the call flow:</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li><p>Create global class definitions as objects by themselfs.
+These are each created and initialized completeley, because of the order each is completely
+defined by itself and the eventually required previous already created classes.</p>
+<ol class="arabic simple">
+<li><p>NamedTupleXABC:</p>
+<ol class="arabic simple">
+<li><p>Create - __new__</p></li>
+<li><p>Initialize - __init__</p></li>
+</ol>
+</li>
+<li><p>AppTupleClass:</p>
+<ol class="arabic simple">
+<li><p>Create - __new__</p></li>
+<li><p>Initialize - __init__</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Create instances/objects.
+Each instance is created completely by walking through the upward hierarchy in the
+inheritance hierarchy. Resulting in combined creation following combined initialization.</p>
+<ol class="arabic simple">
+<li><p>Create - new</p>
+<ol class="arabic simple">
+<li><p>AppTupleClass</p></li>
+<li><p>NamedTupleXABC</p></li>
+</ol>
+</li>
+<li><p>Initialize - __init__</p>
+<ol class="arabic simple">
+<li><p>AppTupleClass</p></li>
+<li><p>NamedTupleXABC</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+<p>As depicted, a metaclass itself is not created here by the applications metaclass but
+provided by the systems <em>type</em>.
+The application defined metaclasses serve as the class factory and create and initialize
+all assigned classes by calling <em>__new__</em> and <em>__init__</em>.
+Here <em>AppTupleClass</em> and <em>NamedTupleXABC</em>.</p>
+<p>The instance creation is performed along the inheritance hierarchy starting at the derived class.
+The applications abstract metaclasses are not involved in the instance creation calls.
+The call hierarchy is first processed for the creation, second for the initialization.</p>
+<p>For the application by <em>namedtuplex</em> refer
+to <a class="reference internal" href="sw_design.html#creationofthenamedtuple"><span class="std std-ref">Creation of the Named Tuple</span></a>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="multiple-inheritance-mixin">
+<h3>5.1.2.2. Multiple Inheritance - Mixin<a class="headerlink" href="#multiple-inheritance-mixin" title="Permalink to this headline">¶</a></h3>
+<p>The process flow changes when an instance of a named tuple class is taken into account.
+The additional named tuple class in the actual implementation is hereby created by the
+factory defined by <a class="reference internal" href="namedtuplex_api.html#param-tuplefactory"><span class="std std-ref">tuplefactory and _tuplefactory</span></a>.
+The created <em>namedtuple</em> class is the first in the list of base classes <em>__bases__</em>, thus called by
+default by the <em>super</em> method.
+The abstract class is the second in the list and is not requied to be called after
+instanciation anyhow.</p>
+<div class="figure align-center" id="id8" style="width: 650px">
+<span id="figure-classconstructionlayersmixin"></span><a class="reference external image-reference" href="_static/class-construction-layers-namedtuple.png"><img alt="_images/class-construction-layers-namedtuple.png" src="_images/class-construction-layers-namedtuple.png" /></a>
+<p class="caption"><span class="caption-text">Figure: Class Construction Layers with Mixin <a class="reference external" href="_static/class-construction-layers-namedtuple.png"><img alt="zoom" src="_images/zoom.png" style="width: 16px;" /></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Source</strong></p>
+<blockquote>
+<div><p>The following example code demonstrates the draft class structure with all <em>__new__</em> and <em>__init__</em>
+methods present.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">namedtupledefs</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">_MyTuple</span> <span class="o">=</span> <span class="n">namedtupledefs</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;MyTuple&#39;</span><span class="p">,</span> <span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="n">fielddefaults</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">33</span><span class="p">))</span>
+<span class="k">class</span> <span class="nc">MyTuple</span><span class="p">(</span><span class="n">_MyTuple</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyTuple  :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyTuple</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyTuple  :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyTuple</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">NamedTupleXABCMeta</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABCMeta  :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABCMeta</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABCMeta  :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABCMeta</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">NamedTupleXABC</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">NamedTupleXABCMeta</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABC      :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABC      :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+
+        <span class="c1"># the abc.ABC passes __init__ to type()</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABC</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">AppTupleClass</span><span class="p">(</span><span class="n">MyTuple</span><span class="p">,</span> <span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="c1">#</span>
+    <span class="c1"># The mixin is actually created by the metaclass, here defined static for demonstration</span>
+    <span class="c1">#</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AppTupleClass  :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AppTupleClass</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AppTupleClass  :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AppTupleClass</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">AppTupleClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>  <span class="c1"># uses default for &#39;z&#39;</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Result</strong></p>
+<blockquote>
+<div><p>Results in the output:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>warning: Debugger speedups using cython not found. Run &#39;&quot;/home/acue/venv/2.7.14/bin/python2.7&quot; &quot;/local/hd1/home1/env/ide/eclipse/eclipse-cpp-neon-3-linux-gtk-x86_64-20171019-devops_18/dropins/PyDev 7.0.3/plugins/org.python.pydev.core_7.0.3.201811082356/pysrc/setup_cython.py&quot; build_ext --inplace&#39; to build.
+pydev debugger: starting (pid: 2857)
+0------------------------------
+
+NamedTupleXABCMeta  :new    :&lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;  (&#39;NamedTupleXABC&#39;, (&lt;type &#39;object&#39;&gt;,), {&#39;__module__&#39;: &#39;__main__&#39;, &#39;__metaclass__&#39;: &lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;, &#39;__new__&#39;: &lt;function __new__ at 0x7f5e2c1bee60&gt;, &#39;__init__&#39;: &lt;function __init__ at 0x7f5e2c1beed8&gt;})  {}
+NamedTupleXABCMeta  :init   :&lt;class &#39;__main__.NamedTupleXABC&#39;&gt;  (&#39;NamedTupleXABC&#39;, (&lt;type &#39;object&#39;&gt;,), {&#39;__module__&#39;: &#39;__main__&#39;, &#39;__metaclass__&#39;: &lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;, &#39;__new__&#39;: &lt;function __new__ at 0x7f5e2c1bee60&gt;, &#39;__init__&#39;: &lt;function __init__ at 0x7f5e2c1beed8&gt;})  {}
+NamedTupleXABCMeta  :new    :&lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;  (&#39;AppTupleClass&#39;, (&lt;class &#39;__main__.MyTuple&#39;&gt;, &lt;class &#39;__main__.NamedTupleXABC&#39;&gt;), {&#39;__module__&#39;: &#39;__main__&#39;, &#39;_fields&#39;: (&#39;a&#39;,), &#39;__new__&#39;: &lt;function __new__ at 0x7f5e2a742230&gt;, &#39;__init__&#39;: &lt;function __init__ at 0x7f5e2a7422a8&gt;})  {}
+NamedTupleXABCMeta  :init   :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  (&#39;AppTupleClass&#39;, (&lt;class &#39;__main__.MyTuple&#39;&gt;, &lt;class &#39;__main__.NamedTupleXABC&#39;&gt;), {&#39;__module__&#39;: &#39;__main__&#39;, &#39;_fields&#39;: (&#39;a&#39;,), &#39;__new__&#39;: &lt;function __new__ at 0x7f5e2a742230&gt;, &#39;__init__&#39;: &lt;function __init__ at 0x7f5e2a7422a8&gt;})  {}
+
+1------------------------------
+
+AppTupleClass  :new    :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  (11, 22)  {}
+MyTuple  :new    :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  (11, 22)  {}
+AppTupleClass  :init   :MyTuple(x=11, y=22, z=33)  (11, 22)  {}
+MyTuple  :init   :MyTuple(x=11, y=22, z=33)  (11, 22)  {}
+NamedTupleXABC      :init   :MyTuple(x=11, y=22, z=33)  (22,)  {}
+
+MyTuple(x=11, y=22, z=33)
+OK
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Discussion</strong></p>
+<blockquote>
+<div><p>With the call flow:</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li><p>Create global class definitions as objects by themselfs.
+These are each created and initialized completeley, because of the order each is completely
+defined by itself and the eventually required previous already created classes.</p>
+<ol class="arabic simple">
+<li><p>NamedTupleXABC:</p>
+<ol class="arabic simple">
+<li><p>Create - __new__</p></li>
+<li><p>Initialize - __init__</p></li>
+</ol>
+</li>
+<li><p>AppTupleClass:</p>
+<ol class="arabic simple">
+<li><p>Create - __new__</p></li>
+<li><p>Initialize - __init__</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Create instances/objects.
+Each instance is created completely by walking through the upward hierarchy in the
+inheritance hierarchy. Resulting in combined creation following combined initialization.</p>
+<ol class="arabic simple">
+<li><p>Create - new</p>
+<ol class="arabic simple">
+<li><p>AppTupleClass</p></li>
+<li><p>NamedTupleXABC</p></li>
+</ol>
+</li>
+<li><p>Initialize - __init__</p>
+<ol class="arabic simple">
+<li><p>AppTupleClass</p></li>
+<li><p>NamedTupleXABC</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+<p>As depicted, a metaclass itself is not created here by the applications metaclass but
+provided by the systems <em>type</em>.
+The application defined metaclasses serve as the class factory and create and initialize
+all assigned classes by calling <em>__new__</em> and <em>__init__</em>.
+Here <em>AppTupleClass</em> and <em>NamedTupleXABC</em>.</p>
+<p>The instance creation is performed along the inheritance hierarchy starting at the derived class.
+The applications abstract metaclasses are not involved in the instance creation calls.
+The call hierarchy is first processed for the creation, second for the initialization.</p>
+<p>For the application by <em>namedtuplex</em> refer
+to <a class="reference internal" href="sw_design.html#creationofthenamedtuple"><span class="std std-ref">Creation of the Named Tuple</span></a>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="the-structure-of-namedtuplex">
+<h3>5.1.2.3. The Structure of <em>namedtuplex</em><a class="headerlink" href="#the-structure-of-namedtuplex" title="Permalink to this headline">¶</a></h3>
+<p><strong>Source</strong></p>
+<blockquote>
+<div><p>The following example code displays the structure as actually defined by <em>namedtuplex</em>.
+The implemented demonstration method stubs are at the same positions as the originals.
+The only adaptation is the callwrapper for the tuple class <em>MyTuple</em> of the demonstrator.
+Thus the callflow traces are the same.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">namedtupledefs</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">_MyTuple</span> <span class="o">=</span> <span class="n">namedtupledefs</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;MyTuple&#39;</span><span class="p">,</span> <span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="n">fielddefaults</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">33</span><span class="p">))</span>
+<span class="k">class</span> <span class="nc">MyTuple</span><span class="p">(</span><span class="n">_MyTuple</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyTuple  :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyTuple</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyTuple  :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyTuple</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">NamedTupleXABCMeta</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABCMeta  :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABCMeta</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NamedTupleXABCMeta  :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">NamedTupleXABCMeta</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">NamedTupleXABC</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">NamedTupleXABCMeta</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="n">abc</span><span class="o">.</span><span class="n">abstractproperty</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">AppTupleClass</span><span class="p">(</span><span class="n">MyTuple</span><span class="p">,</span> <span class="n">NamedTupleXABC</span><span class="p">):</span>
+    <span class="c1"># **The mixin is actually created by the metaclass, here defined static for demonstration**</span>
+    <span class="n">_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AppTupleClass  :new    :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AppTupleClass</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AppTupleClass  :init   :&quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">AppTupleClass</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">AppTupleClass</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>  <span class="c1"># uses default for &#39;z&#39;</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Result</strong></p>
+<blockquote>
+<div><p>Results in the output:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0------------------------------
+
+NamedTupleXABCMeta  :new    :&lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;  (&#39;NamedTupleXABC&#39;, (&lt;type &#39;object&#39;&gt;,), {&#39;__module__&#39;: &#39;__main__&#39;, &#39;__metaclass__&#39;: &lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;})  {}
+NamedTupleXABCMeta  :init   :&lt;class &#39;__main__.NamedTupleXABC&#39;&gt;  (&#39;NamedTupleXABC&#39;, (&lt;type &#39;object&#39;&gt;,), {&#39;__module__&#39;: &#39;__main__&#39;, &#39;__metaclass__&#39;: &lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;})  {}
+NamedTupleXABCMeta  :new    :&lt;class &#39;__main__.NamedTupleXABCMeta&#39;&gt;  (&#39;AppTupleClass&#39;, (&lt;class &#39;__main__.MyTuple&#39;&gt;, &lt;class &#39;__main__.NamedTupleXABC&#39;&gt;), {&#39;__module__&#39;: &#39;__main__&#39;, &#39;_fields&#39;: (&#39;a&#39;,), &#39;__new__&#39;: &lt;function __new__ at 0x7f2f5617c050&gt;, &#39;__init__&#39;: &lt;function __init__ at 0x7f2f5617c140&gt;})  {}
+NamedTupleXABCMeta  :init   :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  (&#39;AppTupleClass&#39;, (&lt;class &#39;__main__.MyTuple&#39;&gt;, &lt;class &#39;__main__.NamedTupleXABC&#39;&gt;), {&#39;__module__&#39;: &#39;__main__&#39;, &#39;_fields&#39;: (&#39;a&#39;,), &#39;__new__&#39;: &lt;function __new__ at 0x7f2f5617c050&gt;, &#39;__init__&#39;: &lt;function __init__ at 0x7f2f5617c140&gt;})  {}
+
+1------------------------------
+
+AppTupleClass  :new    :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  (11, 22)  {}
+MyTuple  :new    :&lt;class &#39;__main__.AppTupleClass&#39;&gt;  (11, 22)  {}
+AppTupleClass  :init   :MyTuple(x=11, y=22, z=33)  (11, 22)  {}
+MyTuple  :init   :MyTuple(x=11, y=22, z=33)  (11, 22)  {}
+
+MyTuple(x=11, y=22, z=33)
+OK
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Discussion</strong></p>
+<blockquote>
+<div><p>The call flow is the same as before, while the new call of the application class <em>AppTupleClass</em>
+is eventually present in rare cases only.</p>
+<p>The call flow once again:</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li><p>Create global class definitions as objects by themselfs.
+These are each created and initialized completeley, because of the order each is completely
+defined by itself and the eventually required previous already created classes.</p>
+<ol class="arabic simple">
+<li><p>NamedTupleXABC:</p>
+<ol class="arabic simple">
+<li><p>Create - __new__</p></li>
+<li><p>Initialize - __init__</p></li>
+</ol>
+</li>
+<li><p>AppTupleClass:</p>
+<ol class="arabic simple">
+<li><p>Create - __new__</p></li>
+<li><p>Initialize - __init__</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Create instances/objects.
+Each instance is created completely by walking through the upward hierarchy in the
+inheritance hierarchy. Resulting in combined creation following combined initialization.</p>
+<ol class="arabic simple">
+<li><p>Create - new</p>
+<ol class="arabic simple">
+<li><p>AppTupleClass</p></li>
+<li><p>NamedTupleXABC</p></li>
+</ol>
+</li>
+<li><p>Initialize - __init__</p>
+<ol class="arabic simple">
+<li><p>AppTupleClass</p></li>
+<li><p>NamedTupleXABC</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+<p>For the application by <em>namedtuplex</em> refer
+to <a class="reference internal" href="sw_design.html#creationofthenamedtuple"><span class="std std-ref">Creation of the Named Tuple</span></a>.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="abc_doc.html" class="btn btn-neutral float-right" title="5.2. Class Concept of namedtuplex.abc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_part_documents.html" class="btn btn-neutral float-left" title="5. Documents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (C) 2016 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+      <span class="lastupdated">
+        Last updated on Dec 06, 2019.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

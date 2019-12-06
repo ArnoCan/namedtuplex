@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.1. namedtuplex.__init__ &mdash; namedtuplex  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6.2. namedtuplex.abc" href="namedtuplex.abc.html" />
+    <link rel="prev" title="6. Modules" href="index_modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.21
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Shortcuts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">NamedtupleX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_cockpit.html">apidoc</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index_part_abstract.html">1. Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_platform_support.html">2. Platform Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_blueprint.html">3. Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namedtuplex_api.html">4. API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_documents.html">5. Documents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_modules.html">6. Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. namedtuplex.__init__</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-namedtuplex.__init__">6.1.1. Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exceptions">6.1.2. Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="namedtuplex.abc.html">6.2. namedtuplex.abc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_indices.html">7. Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_resources.html">8. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">9. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">10. External References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_part_license.html">11. Licenses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Howto</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">namedtuplex</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index_modules.html">6. Modules</a> &raquo;</li>
+        
+      <li>6.1. namedtuplex.__init__</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/namedtuplex.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="namedtuplex-init">
+<span id="api-namedtuplex-init"></span><h1>6.1. namedtuplex.__init__<a class="headerlink" href="#namedtuplex-init" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-namedtuplex.__init__">
+<span id="module"></span><h2>6.1.1. Module<a class="headerlink" href="#module-namedtuplex.__init__" title="Permalink to this headline">¶</a></h2>
+<p>The package ‘namedtuplex’ provides advanced call interfaces and classes for <em>namedtuples</em>.</p>
+</div>
+<div class="section" id="exceptions">
+<h2>6.1.2. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<div class="centerfigure" style="width:450px;">
+<div class="classdiagramhref"><div class="graphviz"><img src="_images/inheritance-b0cc95806208c832be61cbad9c1581a6ad8b86d6.png" alt="Inheritance diagram of namedtuplex" class="inheritance graphviz" /></div>
+</div>
+</div><dl class="class">
+<dt id="namedtuplex.__init__.NamedTupleXError">
+<em class="property">class </em><code class="sig-prename descclassname">namedtuplex.__init__.</code><code class="sig-name descname">NamedTupleXError</code><a class="reference internal" href="_modules/namedtuplex/__init__.html#NamedTupleXError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.__init__.NamedTupleXError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic package error.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="namedtuplex.__init__.NamedTupleXSyntaxError">
+<em class="property">class </em><code class="sig-prename descclassname">namedtuplex.__init__.</code><code class="sig-name descname">NamedTupleXSyntaxError</code><a class="reference internal" href="_modules/namedtuplex/__init__.html#NamedTupleXSyntaxError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.__init__.NamedTupleXSyntaxError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Common syntax error.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="namedtuplex.__init__.NamedTupleXRangeError">
+<em class="property">class </em><code class="sig-prename descclassname">namedtuplex.__init__.</code><code class="sig-name descname">NamedTupleXRangeError</code><a class="reference internal" href="_modules/namedtuplex/__init__.html#NamedTupleXRangeError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.__init__.NamedTupleXRangeError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Range mismatch.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="namedtuplex.__init__.NamedTupleXParameterError">
+<em class="property">class </em><code class="sig-prename descclassname">namedtuplex.__init__.</code><code class="sig-name descname">NamedTupleXParameterError</code><a class="reference internal" href="_modules/namedtuplex/__init__.html#NamedTupleXParameterError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#namedtuplex.__init__.NamedTupleXParameterError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parameters erroroneous.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="namedtuplex.abc.html" class="btn btn-neutral float-right" title="6.2. namedtuplex.abc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_modules.html" class="btn btn-neutral float-left" title="6. Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright (C) 2016 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+      <span class="lastupdated">
+        Last updated on Dec 06, 2019.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<map id="inheritance8ff2d1b3c1" name="inheritance8ff2d1b3c1">
+<area shape="rect" id="node1" title="Metaclass for defining Abstract Base Classes (ABCs)." alt="" coords="34,55,115,80"/>
+<area shape="rect" id="node3" href="#namedtuplex.abc.NamedTupleXABCMeta" target="_top" title="The metaclass for named tuples as an abstract base with support " alt="" coords="192,55,363,80"/>
+<area shape="rect" id="node2" href="#namedtuplex.abc.NamedTupleXABC" target="_top" title="The abstract class for extended *tuple* classes." alt="" coords="5,5,144,31"/>
+</map>
