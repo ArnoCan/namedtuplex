@@ -22,15 +22,12 @@ import sys
 
 import setuptools
 
-import yapyutils.help
-
-
 __author__ = 'Arno-Can Uestuensoez'
 __author_email__ = 'acue_sf2@sourceforge.net'
 __license__ = "Artistic-License-2.0 + Forced-Fairplay-Constraints"
 __copyright__ = "Copyright (C) 2015-2019 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez"
 __uuid__ = "e3590f7b-2a97-4091-9534-d203d49a92ad"
-__vers__ = [0, 1, 24, ]
+__vers__ = [0, 1, 25, ]
 __version__ = "%02d.%02d.%03d" % (__vers__[0], __vers__[1], __vers__[2],)
 __release__ = "%d.%d.%d" % (__vers__[0], __vers__[1], __vers__[2],) + '-rc0'
 __status__ = 'beta'
@@ -54,7 +51,6 @@ _version = "%d.%d.%d" % (__vers__[0], __vers__[1], __vers__[2],)
 
 
 _install_requires = [
-    'yapyutils >= 0.1.0',
     'pythonids >= 0.1.0',
     'namedtupledefs >= 0.1.20',
 ]
@@ -69,10 +65,6 @@ if '--offline' in sys.argv:
     __no_install_requires = True
     sys.argv.remove('--offline')
 
-# Help on addons.
-if '--help-namedtuplex' in sys.argv:
-    yapyutils.help.usage('setup')
-    sys.exit(0)
 
 if __no_install_requires:
     print("#")
