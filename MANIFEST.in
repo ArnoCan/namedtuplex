@@ -1,12 +1,21 @@
-#documentation
-recursive-include doc/en/html/man3/namedtuplex *
-
-#Misc
-include .gitignore
-include ArtisticLicense20.html
+# README
 include README.md
-include callDocSphinx.sh
+
+# License
+include LICENSE.txt
+include ArtisticLicense20.html
 include licenses-amendments.txt
-include setup.cfg
+
+# setup
 include setup.py
-include dosrc/namedtuplex-64x64.png
+include setup.cfg
+
+
+# documentation
+recursive-include doc/en *
+
+# test cases and data
+recursive-include tests *
+recursive-include testdata *
+
+

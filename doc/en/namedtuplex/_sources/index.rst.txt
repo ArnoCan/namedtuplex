@@ -15,6 +15,7 @@ NamedtupleX
 
    self   
    apidoc <index_part_cockpit>
+   apiref <index_part_apiref_scaled>
 
 .. toctree::
    :includehidden:

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>namedtuplex</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link - Main Document -->
+      <th>&nbsp;&nbsp;&nbsp;<a target="_top"
+        href="../index.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th>&nbsp;&nbsp;&nbsp;<a target="_top"
+        href="../index_part_apiref_scaled.html">Top</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th>
+          &nbsp;&nbsp;&nbsp;
+          <a target="_parent" href="frames.html">&larr;</a>
+          &nbsp;
+      <th>
+      <th>
+          &nbsp;
+          <a target="_parent" href="frames-right.html">&rarr;</a>
+          &nbsp;&nbsp;&nbsp;
+      </th>
+
+  <!-- Overview link - api reference-->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Overview&nbsp;&nbsp;&nbsp;</th>
+
+
+  <!-- Module -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Module</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Class -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="class-tree.html">Class</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+  <!--
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Tree</a>&nbsp;&nbsp;&nbsp;</th>
+  -->
+  
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr>
+              <th>&nbsp;&nbsp;&nbsp;<a
+                href="http://pypi.python.org/pypi/setupdocx">@www</a>&nbsp;&nbsp;&nbsp;</th>
+          </tr></table></th>
+
+  <!-- About link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="about.html">About</a>&nbsp;&nbsp;&nbsp;</th>
+  </tr>
+</table>
+<table class="subnavbar" width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td>
+      <table class="items" cellpadding="0" cellspacing="0">
+        <tr>
+            <td align="center">
+                <span class="options">
+                  <a href="frames.html" target="_top">&lt;Frames(L)</a>
+                </span>
+                &nbsp;
+            </td>
+            <td align="center">
+                &#124;
+                &nbsp;
+                <span class="options">
+                    <a href="namedtuplex-pysrc.html" target="_top">No&nbsp;Frames</a>
+                </span>
+                &nbsp;
+                &#124;
+            </td>
+            <td align="center">
+                &nbsp;
+                <span class="options">
+                   <a href="frames-right.html" target="_top">Frames(R)&gt;</a>
+                </span>
+            </td>
+           </tr>
+      </table>
+    </td>
+    <td>
+    </td>
+ </tr>
+ <tr>
+</table>
+      <span class="breadcrumbs">
+        Package&nbsp;namedtuplex
+      </span>
+<h1 class="epydoc">Source Code for <a href="namedtuplex-module.html">Package namedtuplex</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">&quot;&quot;&quot;The package &#x27;namedtuplex&#x27; provides advanced call interfaces and classes for *namedtuples*.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">&quot;&quot;&quot;</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">__future__</tt> <tt class="py-keyword">import</tt> <tt class="py-name">absolute_import</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">&#x27;Arno-Can Uestuensoez&#x27;</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">&quot;Artistic-License-2.0 + Forced-Fairplay-Constraints&quot;</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">&quot;Copyright (C) 2019 Arno-Can Uestuensoez&quot;</tt> \ </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">                <tt class="py-string">&quot;@Ingenieurbuero Arno-Can Uestuensoez&quot;</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">&#x27;0.1.1&#x27;</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable namedtuplex.__uuid__=namedtuplex-module.html#__uuid__,Variable namedtuplex.abc.__uuid__=namedtuplex.abc-module.html#__uuid__"><a title="namedtuplex.__uuid__
+namedtuplex.abc.__uuid__" class="py-name" href="#" onclick="return doclink('link-0', '__uuid__', 'link-0');">__uuid__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">&quot;e3590f7b-2a97-4091-9534-d203d49a92ad&quot;</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-name">__docformat__</tt> <tt class="py-op">=</tt> <tt class="py-string">&quot;restructuredtext en&quot;</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="NamedTupleXError"></a><div id="NamedTupleXError-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="NamedTupleXError-toggle" onclick="return toggle('NamedTupleXError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="namedtuplex.NamedTupleXError-class.html">NamedTupleXError</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NamedTupleXError-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="NamedTupleXError-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-docstring">&quot;&quot;&quot;Generic package error.&quot;&quot;&quot;</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="NamedTupleXSyntaxError"></a><div id="NamedTupleXSyntaxError-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="NamedTupleXSyntaxError-toggle" onclick="return toggle('NamedTupleXSyntaxError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="namedtuplex.NamedTupleXSyntaxError-class.html">NamedTupleXSyntaxError</a><tt class="py-op">(</tt><tt class="py-base-class">NamedTupleXError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NamedTupleXSyntaxError-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="NamedTupleXSyntaxError-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt class="py-docstring">&quot;&quot;&quot;Common syntax error.&quot;&quot;&quot;</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="NamedTupleXParameterError"></a><div id="NamedTupleXParameterError-def"><a name="L26"></a><tt class="py-lineno">26</tt> <a class="py-toggle" href="#" id="NamedTupleXParameterError-toggle" onclick="return toggle('NamedTupleXParameterError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="namedtuplex.NamedTupleXParameterError-class.html">NamedTupleXParameterError</a><tt class="py-op">(</tt><tt class="py-base-class">NamedTupleXError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NamedTupleXParameterError-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="NamedTupleXParameterError-expanded"><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">    <tt class="py-docstring">&quot;&quot;&quot;Parameters erroroneous.&quot;&quot;&quot;</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="NamedTupleXRangeError"></a><div id="NamedTupleXRangeError-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="NamedTupleXRangeError-toggle" onclick="return toggle('NamedTupleXRangeError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="namedtuplex.NamedTupleXRangeError-class.html">NamedTupleXRangeError</a><tt class="py-op">(</tt><tt class="py-base-class">NamedTupleXError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NamedTupleXRangeError-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="NamedTupleXRangeError-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">    <tt class="py-docstring">&quot;&quot;&quot;Range mismatch.&quot;&quot;&quot;</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="NamedTupleXABCError"></a><div id="NamedTupleXABCError-def"><a name="L36"></a><tt class="py-lineno">36</tt> <a class="py-toggle" href="#" id="NamedTupleXABCError-toggle" onclick="return toggle('NamedTupleXABCError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="namedtuplex.NamedTupleXABCError-class.html">NamedTupleXABCError</a><tt class="py-op">(</tt><tt class="py-base-class">NamedTupleXError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NamedTupleXABCError-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="NamedTupleXABCError-expanded"><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-docstring">&quot;&quot;&quot;Common syntax error.&quot;&quot;&quot;</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link - Main Document -->
+      <th>&nbsp;&nbsp;&nbsp;<a target="_top"
+        href="../index.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th>&nbsp;&nbsp;&nbsp;<a target="_top"
+        href="../index_part_apiref_scaled.html">Top</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th>
+          &nbsp;&nbsp;&nbsp;
+          <a target="_parent" href="frames.html">&larr;</a>
+          &nbsp;
+      <th>
+      <th>
+          &nbsp;
+          <a target="_parent" href="frames-right.html">&rarr;</a>
+          &nbsp;&nbsp;&nbsp;
+      </th>
+
+  <!-- Overview link - api reference-->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Overview&nbsp;&nbsp;&nbsp;</th>
+
+
+  <!-- Module -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Module</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Class -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="class-tree.html">Class</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+  <!--
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Tree</a>&nbsp;&nbsp;&nbsp;</th>
+  -->
+  
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr>
+              <th>&nbsp;&nbsp;&nbsp;<a
+                href="http://pypi.python.org/pypi/setupdocx">@www</a>&nbsp;&nbsp;&nbsp;</th>
+          </tr></table></th>
+
+  <!-- About link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="about.html">About</a>&nbsp;&nbsp;&nbsp;</th>
+  </tr>
+</table>
+<table class="footTable" border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+        Copyright(C) 2019 Arno-Can Uestuensoez @Ingenieurbuero Arno-Can Uestuensoez
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="https://arnocan.wordpress.com"
+        >https://arnocan.wordpress.com</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="lest" class="footer">
+    Generated by Epydoc 4.0.4 / Python-3.8 / fedora27 on Fri Dec 13 13:59:47 2019
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
